@@ -33,9 +33,11 @@ defmodule Stixex.Types.Identifier do
     end
   end
 
-  def generate(type_name) do
-    "#{type_name}--#{Ecto.UUID.generate()}"
+  def generate do
+    Ecto.UUID.generate()
   end
+
+  def autogenerate, do: generate()
 
   def load(id), do: {:ok, id}
   def dump(id), do: {:ok, id}
