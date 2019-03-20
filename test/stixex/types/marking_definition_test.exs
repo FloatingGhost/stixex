@@ -12,7 +12,8 @@ defmodule StixexTest.Types.MarkingDefinition do
       definition: %{
         statement: "Copyright 2016, Example Corp"
       }
-    } 
+    }
+
     changeset = MarkingDefinition.changeset(%MarkingDefinition{}, params)
     assert changeset.valid? == true
   end
@@ -27,6 +28,7 @@ defmodule StixexTest.Types.MarkingDefinition do
         tlp: "red"
       }
     }
+
     changeset = MarkingDefinition.changeset(%MarkingDefinition{}, params)
     assert changeset.valid? == false
 
@@ -35,10 +37,11 @@ defmodule StixexTest.Types.MarkingDefinition do
       id: "marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da",
       created: "2016-08-01T00:00:00.000Z",
       definition_type: "tlp",
-      definition: %{          
-        tlp: "red"            
-      }                       
-    }                         
+      definition: %{
+        tlp: "red"
+      }
+    }
+
     changeset = MarkingDefinition.changeset(%MarkingDefinition{}, params)
     assert changeset.valid? == true
 
@@ -47,10 +50,11 @@ defmodule StixexTest.Types.MarkingDefinition do
       id: "marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da",
       created: "2016-08-01T00:00:00.000Z",
       definition_type: "tlp",
-      definition: %{          
-        tlp: "purple"            
-      }                       
-    }                         
+      definition: %{
+        tlp: "purple"
+      }
+    }
+
     changeset = MarkingDefinition.changeset(%MarkingDefinition{}, params)
     assert changeset.valid? == false
   end

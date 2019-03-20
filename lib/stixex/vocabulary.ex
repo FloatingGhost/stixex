@@ -19,11 +19,11 @@ defmodule Stixex.Vocabulary do
   """
   def get(name) when is_binary(name) do
     if String.ends_with?(name, "-ov") do
-      module = 
+      module =
         name
         |> String.trim_trailing("-ov")
         |> kebab_case_to_upper_camel_case()
-        |> (&("#{__MODULE__}."<>&1)).()
+        |> (&("#{__MODULE__}." <> &1)).()
         |> String.to_atom()
 
       has_values? = Keyword.has_key?(module.__info__(:functions), :values)
@@ -45,8 +45,9 @@ defmodule Stixex.Vocabulary do
     case get(name) do
       {:ok, vocab_module} ->
         vocab_module
+
       {:error, _reason} ->
-        throw "Cannot get #{name}"
+        throw("Cannot get #{name}")
     end
   end
 

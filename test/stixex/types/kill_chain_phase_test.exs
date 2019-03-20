@@ -7,6 +7,7 @@ defmodule StixexTest.Types.KillChainPhase do
       kill_chain_name: "lockheed-martin-cyber-kill-chain",
       phase_name: "reconnaissance"
     }
+
     changeset = KillChainPhase.changeset(%KillChainPhase{}, params)
     assert changeset.valid? == true
   end
@@ -15,6 +16,7 @@ defmodule StixexTest.Types.KillChainPhase do
     params = %{
       phase_name: "reconnaissance"
     }
+
     changeset = KillChainPhase.changeset(%KillChainPhase{}, params)
     assert changeset.valid? == false
   end
@@ -23,6 +25,7 @@ defmodule StixexTest.Types.KillChainPhase do
     params = %{
       phase_name: "reconnaissance"
     }
+
     changeset = KillChainPhase.changeset(%KillChainPhase{}, params)
     assert changeset.valid? == false
   end

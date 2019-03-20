@@ -21,8 +21,8 @@ defmodule Stixex.Types.GranularMarking do
   @required_fields [:marking_ref, :selectors]
 
   embedded_schema do
-    field :marking_ref, Stixex.Types.Identifier
-    field :selectors, {:array, :string}
+    field(:marking_ref, Stixex.Types.Identifier)
+    field(:selectors, {:array, :string})
   end
 
   def changeset(struct, params) do

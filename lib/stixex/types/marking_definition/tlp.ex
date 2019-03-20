@@ -6,7 +6,7 @@ defmodule Stixex.Types.MarkingDefinition.TLP do
   @required_fields [:tlp]
 
   embedded_schema do
-    field :tlp, :string
+    field(:tlp, :string)
   end
 
   def changeset(struct, params) do

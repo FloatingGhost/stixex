@@ -20,12 +20,12 @@ defmodule Stixex.Types.Hashes do
     |> Regex.match?(key)
   end
 
-  defp valid_key?("x_"<>_key_name = custom_key) do
+  defp valid_key?("x_" <> _key_name = custom_key) do
     key_matches_regex?(custom_key)
   end
-    
+
   defp valid_key?(key) do
-    {:ok, vocabulary} = 
+    {:ok, vocabulary} =
       @vocabulary
       |> Stixex.Vocabulary.get()
 
@@ -46,7 +46,7 @@ defmodule Stixex.Types.Hashes do
     :error
   """
   def cast(%{} = hashes) do
-    keys_valid? = 
+    keys_valid? =
       hashes
       |> Map.keys()
       |> Enum.all?(&valid_key?/1)

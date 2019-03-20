@@ -11,8 +11,8 @@ defmodule Stixex.Types.KillChainPhase do
   @required_fields [:kill_chain_name, :phase_name]
 
   embedded_schema do
-    field :kill_chain_name, :string
-    field :phase_name, :string
+    field(:kill_chain_name, :string)
+    field(:phase_name, :string)
   end
 
   def changeset(struct, params) do

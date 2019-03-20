@@ -5,7 +5,7 @@ defmodule Stixex.Types.MarkingDefinition.Statement do
   @required_fields [:statement]
 
   embedded_schema do
-    field :statement, :string
+    field(:statement, :string)
   end
 
   def changeset(struct, params) do
@@ -13,4 +13,4 @@ defmodule Stixex.Types.MarkingDefinition.Statement do
     |> cast(params, [:statement])
     |> validate_required(@required_fields)
   end
-end  
+end

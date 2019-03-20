@@ -25,6 +25,7 @@ defmodule Stixex.Selector do
       |> String.trim_leading("[")
       |> String.trim_trailing("]")
       |> Integer.parse()
+
     if Enum.count(from) < index do
       # Out of range!
       {:error, {:out_of_range, index}}

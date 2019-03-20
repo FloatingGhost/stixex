@@ -15,9 +15,10 @@ defmodule Stixex.Validation do
       %{changes: %{}, valid?: false}
   """
   def validate_one_of(%{changes: %{} = changes} = changeset, fields \\ []) do
-    ok? = 
+    ok? =
       fields
       |> Enum.any?(&Map.has_key?(changes, &1))
+
     if ok? do
       changeset
     else
@@ -29,12 +30,14 @@ defmodule Stixex.Validation do
   def validate_url(%{changes: %{} = changes} = changeset, field) do
     if Map.has_key?(changes, field) do
       if ValidUrl.validate(changes[field]) do
-        changeset # okiedokie!
+        # okiedokie!
+        changeset
       else
         add_error(changeset, field, "URL not valid")
       end
     else
-      changeset # key wasn't even specified, we're cool
+      # key wasn't even specified, we're cool
+      changeset
     end
   end
 end

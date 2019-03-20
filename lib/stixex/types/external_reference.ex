@@ -16,16 +16,17 @@ defmodule Stixex.Types.ExternalReference do
   @required_one_of [:description, :url, :external_id]
 
   embedded_schema do
-    field :source_name, :string
-    field :description, :string
-    field :url, :string
-    field :hashes, Stixex.Types.Hashes
-    field :external_id, :string
+    field(:source_name, :string)
+    field(:description, :string)
+    field(:url, :string)
+    field(:external_id, :string)
+    embeds_one(:hashes, Stixex.Types.Hashes)
   end
 
   def changeset(struct, params) do
     struct
-    |> cast(params, [:source_name, :description, :url, :hashes, :external_id])
+    |> cast(params, [:source_name, :description, :url, :external_id])
+    |> cast_embed(:hashes, with: &Stixex.Types.Hashes.changeset/2)
     |> validate_required(@required_fields)
     |> validate_one_of(@required_one_of)
     |> validate_url(:url)
