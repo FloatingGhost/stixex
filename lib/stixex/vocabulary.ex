@@ -1,7 +1,8 @@
 defmodule Stixex.Vocabulary do
   @moduledoc """
-  Set vocabularies to make sure certain fields have certain
-  values
+  Set vocabularies to restrict the values of certain fields to one of a given list
+
+  See specification section 6
   """
 
   @doc """
@@ -34,6 +35,50 @@ defmodule Stixex.Vocabulary do
       end
     else
       {:error, {:invalid_name, name}}
+    end
+  end
+
+  @doc """
+  Get a vocabulary, throwing an error if it doesn't exist
+  """
+  def get!(name) when is_binary(name) do
+    case get(name) do
+      {:ok, vocab_module} ->
+        vocab_module
+      {:error, _reason} ->
+        throw "Cannot get #{name}"
+    end
+  end
+
+  @doc """
+  Is a given value valid for a vocabulary?
+
+      iex> Stixex.Vocabulary.has_value?(Stixex.Vocabulary.HashAlgorithm, "MD5")
+      true
+
+      iex> Stixex.Vocabulary.has_value?("hash-algorithm-ov", "MD5")
+      true
+
+      iex> Stixex.Vocabulary.has_value?("hash-algorithm-ov", "notahash")
+      false
+  """
+  def has_value?(vocabulary, value) when is_atom(vocabulary) and is_binary(value) do
+    Enum.member?(vocabulary.values(), value)
+  end
+
+  def has_value?(vocabulary, value) when is_atom(vocabulary) and is_atom(value) do
+    has_value?(vocabulary, to_string(value))
+  end
+
+  def has_value?(vocabulary, value) when is_binary(vocabulary) do
+    vocab = get(vocabulary)
+
+    case vocab do
+      {:ok, vocab_module} ->
+        has_value?(vocab_module, value)
+
+      {:error, _reason} ->
+        false
     end
   end
 
