@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.AttackMotivation do
+defmodule Stixex.Vocabularies.AttackMotivation do
   def values do
     ~w[
       accidental

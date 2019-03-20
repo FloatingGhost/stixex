@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.ThretActorRole do
+defmodule Stixex.Vocabularies.ThretActorRole do
   def values do
     ~w[
       agent

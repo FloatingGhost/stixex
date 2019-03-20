@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.HashAlgorithm do
+defmodule Stixex.Vocabularies.HashAlgorithm do
   def values do
     ~w[
       MD5

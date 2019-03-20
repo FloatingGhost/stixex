@@ -27,10 +27,10 @@ defmodule Stixex.Types.Hashes do
   defp valid_key?(key) do
     {:ok, vocabulary} =
       @vocabulary
-      |> Stixex.Vocabulary.get()
+      |> Stixex.Vocabularies.get()
 
     vocabulary
-    |> Stixex.Vocabulary.has_value?(key)
+    |> Stixex.Vocabularies.has_value?(key)
   end
 
   @doc """

@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.IndustrySector do
+defmodule Stixex.Vocabularies.IndustrySector do
   def values do
     ~w[
       agriculture
