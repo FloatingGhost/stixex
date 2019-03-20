@@ -20,13 +20,12 @@ defmodule Stixex.Types.ExternalReference do
     field(:description, :string)
     field(:url, :string)
     field(:external_id, :string)
-    embeds_one(:hashes, Stixex.Types.Hashes)
+    field(:hashes, Stixex.Types.Hashes)
   end
 
   def changeset(struct, params) do
     struct
-    |> cast(params, [:source_name, :description, :url, :external_id])
-    |> cast_embed(:hashes, with: &Stixex.Types.Hashes.changeset/2)
+    |> cast(params, [:source_name, :description, :url, :external_id, :hashes])
     |> validate_required(@required_fields)
     |> validate_one_of(@required_one_of)
     |> validate_url(:url)

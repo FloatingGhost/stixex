@@ -35,8 +35,8 @@ defmodule Stixex.Types.MarkingDefinition do
       :definition_type,
       :definition
     ])
-    |> cast_assoc(:granular_markings, with: &Stixex.Types.GranularMarking.changeset/2)
-    |> cast_assoc(:external_references, with: &Stixex.Types.ExternalReference.changeset/2)
+    |> cast_embed(:granular_markings, with: &Stixex.Types.GranularMarking.changeset/2)
+    |> cast_embed(:external_references, with: &Stixex.Types.ExternalReference.changeset/2)
     |> put_created_at()
     |> validate_required(@required_fields)
     |> validate_length(:external_references, min: 1)
