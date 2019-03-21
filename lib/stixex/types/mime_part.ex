@@ -1,11 +1,11 @@
-defmodule Stixex.Types.MimePart do
+defmodule StixEx.Types.MimePart do
   use Ecto.Schema
   import Ecto.Changeset
-  import Stixex.Validation
+  import StixEx.Validation
 
   embedded_schema do
     field(:body, :string)
-    field(:body_raw_ref, Stixex.Types.ObjectRef)
+    field(:body_raw_ref, StixEx.Types.ObjectRef)
     field(:content_type, :string)
     field(:content_disposition, :string)
   end

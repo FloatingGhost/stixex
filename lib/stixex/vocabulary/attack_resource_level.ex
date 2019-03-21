@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.AttackResourceLevel do
+defmodule StixEx.Vocabulary.AttackResourceLevel do
   def values do
     ~w[
       individual

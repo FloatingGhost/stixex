@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Identity do
-  use Stixex.Object, type_name: "identity"
+defmodule StixEx.Object.Identity do
+  use StixEx.Object, type_name: "identity"
 
   @required_fields [:name, :identity_class]
 

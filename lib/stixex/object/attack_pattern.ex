@@ -1,5 +1,5 @@
-defmodule Stixex.Object.AttackPattern do
-  use Stixex.Object, type_name: "attack-pattern"
+defmodule StixEx.Object.AttackPattern do
+  use StixEx.Object, type_name: "attack-pattern"
 
   @required_fields [:name]
 

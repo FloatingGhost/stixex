@@ -1,5 +1,5 @@
-defmodule Stixex.Object.ObservedData do
-  use Stixex.Object, type_name: "observed-data"
+defmodule StixEx.Object.ObservedData do
+  use StixEx.Object, type_name: "observed-data"
 
   @required_fields [:first_observed, :last_observed, :number_observed, :objects]
 

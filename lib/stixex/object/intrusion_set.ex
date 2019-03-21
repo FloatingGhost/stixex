@@ -1,5 +1,5 @@
-defmodule Stixex.Object.IntrusionSet do
-  use Stixex.Object, type_name: "intrusion-set"
+defmodule StixEx.Object.IntrusionSet do
+  use StixEx.Object, type_name: "intrusion-set"
 
   @required_fields [:name]
 

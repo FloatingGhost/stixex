@@ -1,7 +1,7 @@
-defmodule StixexTest.Types.Bundle do
+defmodule StixExTest.Types.Bundle do
   use ExUnit.Case
 
-  alias Stixex.Types.Bundle
+  alias StixEx.Types.Bundle
 
   test "Example data should be valid" do
     params = %{

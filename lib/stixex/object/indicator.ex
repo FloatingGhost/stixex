@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Indicator do
-  use Stixex.Object, type_name: "indicator"
+defmodule StixEx.Object.Indicator do
+  use StixEx.Object, type_name: "indicator"
 
   @required_fields [:labels, :pattern, :valid_from]
 

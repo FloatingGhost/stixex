@@ -1,4 +1,4 @@
-defmodule Stixex.Types.KillChainPhase do
+defmodule StixEx.Types.KillChainPhase do
   @moduledoc """
   The kill-chain-phase represents a phase in a kill chain,
   which describes the various phases an attacker may undertake in order

@@ -1,5 +1,5 @@
-defmodule Stixex.Object.ThreatActor do
-  use Stixex.Object, type_name: "threat-actor"
+defmodule StixEx.Object.ThreatActor do
+  use StixEx.Object, type_name: "threat-actor"
 
   @required_fields [:labels, :name]
 

@@ -1,10 +1,10 @@
-defmodule Stixex.Object.Observable.Extension.ArchiveFile do
-  use Stixex.Object.Observable.Extension, type_name: "archive-ext"
+defmodule StixEx.Object.Observable.Extension.ArchiveFile do
+  use StixEx.Object.Observable.Extension, type_name: "archive-ext"
 
   @required_fields [:contains_refs]
 
   embedded_schema do
-    field(:contains_refs, {:array, Stixex.Types.ObjectRef})
+    field(:contains_refs, {:array, StixEx.Types.ObjectRef})
     field(:version, :string)
     field(:comment, :string)
   end

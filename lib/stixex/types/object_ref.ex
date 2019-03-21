@@ -1,4 +1,4 @@
-defmodule Stixex.Types.ObjectRef do
+defmodule StixEx.Types.ObjectRef do
   @moduledoc """
   The Object Reference data type specifies a local reference to an Observable Object,
   that is, one which MUST be valid within the local scope of

@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Observable.Directory do
-  use Stixex.Object.Observable, type_name: "directory"
+defmodule StixEx.Object.Observable.Directory do
+  use StixEx.Object.Observable, type_name: "directory"
 
   @required_fields [:path]
 
@@ -10,7 +10,7 @@ defmodule Stixex.Object.Observable.Directory do
     field(:created, :utc_datetime)
     field(:modified, :utc_datetime)
     field(:accessed, :utc_datetime)
-    field(:contains_refs, {:array, Stixex.Types.ObjectRef})
+    field(:contains_refs, {:array, StixEx.Types.ObjectRef})
   end
 
   def changeset(struct, params) do

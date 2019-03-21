@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Observable.Extension.PDF do
-  use Stixex.Object.Observable.Extension, type_name: "pdf-ext"
+defmodule StixEx.Object.Observable.Extension.PDF do
+  use StixEx.Object.Observable.Extension, type_name: "pdf-ext"
 
   embedded_schema do
     field(:version, :string)

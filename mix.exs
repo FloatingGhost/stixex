@@ -1,4 +1,4 @@
-defmodule Stixex.MixProject do
+defmodule StixEx.MixProject do
   use Mix.Project
 
   def project do

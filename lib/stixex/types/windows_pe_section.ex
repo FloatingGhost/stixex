@@ -1,7 +1,7 @@
-defmodule Stixex.Types.WindowsPESection do
+defmodule StixEx.Types.WindowsPESection do
   use Ecto.Schema
   import Ecto.Changeset
-  import Stixex.Validation
+  import StixEx.Validation
 
   @required_fields [:name]
 
@@ -9,7 +9,7 @@ defmodule Stixex.Types.WindowsPESection do
     field(:name, :string)
     field(:size, :integer)
     field(:entropy, :float)
-    field(:hashes, Stixex.Types.Hashes)
+    field(:hashes, StixEx.Types.Hashes)
   end
 
   def changeset(struct, params) do

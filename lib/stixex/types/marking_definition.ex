@@ -1,4 +1,4 @@
-defmodule Stixex.Types.MarkingDefinition do
+defmodule StixEx.Types.MarkingDefinition do
   @moduledoc """
   The marking-definition object represents a specific marking.
   Data markings typically represent handling or sharing requirements for data,
@@ -8,21 +8,21 @@ defmodule Stixex.Types.MarkingDefinition do
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias Stixex.Types.MarkingDefinition
+  alias StixEx.Types.MarkingDefinition
 
   @required_fields [:type, :id, :created, :definition_type, :definition]
   @primary_key false
 
   embedded_schema do
     field(:type, :string)
-    field(:id, Stixex.Types.Identifier)
-    field(:created_by_ref, Stixex.Types.Identifier)
+    field(:id, StixEx.Types.Identifier)
+    field(:created_by_ref, StixEx.Types.Identifier)
     field(:created, :utc_datetime_usec)
-    field(:object_marking_refs, {:array, Stixex.Types.Identifier})
+    field(:object_marking_refs, {:array, StixEx.Types.Identifier})
     field(:definition_type, :string)
     field(:definition, :map)
-    embeds_many(:granular_markings, Stixex.Types.GranularMarking)
-    embeds_many(:external_references, Stixex.Types.ExternalReference)
+    embeds_many(:granular_markings, StixEx.Types.GranularMarking)
+    embeds_many(:external_references, StixEx.Types.ExternalReference)
   end
 
   def changeset(struct, params) do
@@ -35,8 +35,8 @@ defmodule Stixex.Types.MarkingDefinition do
       :definition_type,
       :definition
     ])
-    |> cast_embed(:granular_markings, with: &Stixex.Types.GranularMarking.changeset/2)
-    |> cast_embed(:external_references, with: &Stixex.Types.ExternalReference.changeset/2)
+    |> cast_embed(:granular_markings, with: &StixEx.Types.GranularMarking.changeset/2)
+    |> cast_embed(:external_references, with: &StixEx.Types.ExternalReference.changeset/2)
     |> put_created_at()
     |> validate_required(@required_fields)
     |> validate_length(:external_references, min: 1)

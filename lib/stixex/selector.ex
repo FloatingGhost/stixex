@@ -1,9 +1,9 @@
-defmodule Stixex.Selector do
+defmodule StixEx.Selector do
   @moduledoc """
   Functions to deal with "selectors", little strings of JSONPath-alike
   format to select from a map
 
-    iex> Stixex.Selector.select("akari.[0]",
+    iex> StixEx.Selector.select("akari.[0]",
           %{yui: "is cute", akari: ["akariiiin", %{presence: 0}]})
     akariiiin
   """

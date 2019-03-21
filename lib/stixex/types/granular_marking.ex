@@ -1,4 +1,4 @@
-defmodule Stixex.Types.GranularMarking do
+defmodule StixEx.Types.GranularMarking do
   @moduledoc """
   Whereas object markings apply to an entire STIX Object or Marking Definition and all 
   its properties, granular markings allow data markings to be applied to individual 
@@ -21,7 +21,7 @@ defmodule Stixex.Types.GranularMarking do
   @required_fields [:marking_ref, :selectors]
 
   embedded_schema do
-    field(:marking_ref, Stixex.Types.Identifier)
+    field(:marking_ref, StixEx.Types.Identifier)
     field(:selectors, {:array, :string})
   end
 

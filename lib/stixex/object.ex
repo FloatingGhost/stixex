@@ -1,4 +1,4 @@
-defmodule Stixex.Object do
+defmodule StixEx.Object do
   @moduledoc """
   Wrapper type to cast to other embeds
   """
@@ -18,15 +18,15 @@ defmodule Stixex.Object do
   defmacro common_fields do
     quote do
       field(:type, :string, default: @type_name)
-      field(:created_by_ref, Stixex.Types.Identifier)
+      field(:created_by_ref, StixEx.Types.Identifier)
       field(:revoked, :boolean, default: false)
       field(:labels, {:array, :string})
-      field(:object_marking_refs, {:array, Stixex.Types.Identifier})
+      field(:object_marking_refs, {:array, StixEx.Types.Identifier})
       field(:created, :utc_datetime)
       field(:modified, :utc_datetime)
 
-      embeds_many(:external_references, Stixex.Types.ExternalReference)
-      embeds_many(:granular_markings, Stixex.Types.GranularMarking)
+      embeds_many(:external_references, StixEx.Types.ExternalReference)
+      embeds_many(:granular_markings, StixEx.Types.GranularMarking)
     end
   end
 
@@ -53,7 +53,7 @@ defmodule Stixex.Object do
 
   defmacro kill_chain_phases do
     quote do
-      field(:kill_chain_phases, {:array, Stixex.Types.KillChainPhase})
+      field(:kill_chain_phases, {:array, StixEx.Types.KillChainPhase})
     end
   end
 
@@ -61,14 +61,14 @@ defmodule Stixex.Object do
     quote do
       use Ecto.Schema
       import Ecto.Changeset
-      import Stixex.Object
-      import Stixex.Validation
+      import StixEx.Object
+      import StixEx.Validation
 
-      @primary_key {:id, Stixex.Types.Identifier, []}
+      @primary_key {:id, StixEx.Types.Identifier, []}
       @type_name unquote(opts[:type_name])
 
       defp generate_id do
-        Stixex.Types.Identifier.generate(unquote(opts[:type_name]))
+        StixEx.Types.Identifier.generate(unquote(opts[:type_name]))
       end
     end
   end

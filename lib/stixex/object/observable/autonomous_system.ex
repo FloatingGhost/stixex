@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Observable.AutonomousSystem do
-  use Stixex.Object.Observable, type_name: "autonomous-system"
+defmodule StixEx.Object.Observable.AutonomousSystem do
+  use StixEx.Object.Observable, type_name: "autonomous-system"
 
   @required_fields [:number]
 

@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.EncryptionAlgo do
+defmodule StixEx.Vocabulary.EncryptionAlgo do
   @moduledoc """
   An open vocabulary of encryption algorithms.
   """

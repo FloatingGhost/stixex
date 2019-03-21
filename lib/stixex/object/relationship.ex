@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Relationship do
-  use Stixex.Object, type_name: "relationship"
+defmodule StixEx.Object.Relationship do
+  use StixEx.Object, type_name: "relationship"
 
   @required_fields [:type, :relationship_type, :source_ref, :target_ref]
 
@@ -7,8 +7,8 @@ defmodule Stixex.Object.Relationship do
     common_fields()
     field(:relationship_type, :string)
     field(:description, :string)
-    field(:source_ref, Stixex.Types.Identifier)
-    field(:target_ref, Stixex.Types.Identifier)
+    field(:source_ref, StixEx.Types.Identifier)
+    field(:target_ref, StixEx.Types.Identifier)
   end
 
   def changeset(struct, params) do

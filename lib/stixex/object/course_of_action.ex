@@ -1,5 +1,5 @@
-defmodule Stixex.Object.CourseOfAction do
-  use Stixex.Object, type_name: "course-of-action"
+defmodule StixEx.Object.CourseOfAction do
+  use StixEx.Object, type_name: "course-of-action"
 
   @required_fields [:name]
 

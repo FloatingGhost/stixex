@@ -1,4 +1,4 @@
-defmodule Stixex.Types.Identifier do
+defmodule StixEx.Types.Identifier do
   @moduledoc """
   An identifier universally and uniquely identifies a SDO, SRO,
   Bundle, or Marking Definition.

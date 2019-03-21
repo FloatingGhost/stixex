@@ -1,7 +1,7 @@
-defmodule Stixex.Bundle do
+defmodule StixEx.Bundle do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Stixex.Types
+  alias StixEx.Types
 
   @type_name "bundle"
   @spec_version "2.0"
@@ -10,7 +10,7 @@ defmodule Stixex.Bundle do
 
   embedded_schema do
     field(:type, :string)
-    field(:id, Types.Identifier, autogenerate: {Stixex.Types.Identifier, :generate, [@type_name]})
+    field(:id, Types.Identifier, autogenerate: {StixEx.Types.Identifier, :generate, [@type_name]})
     field(:spec_version, :string)
 
     embeds_many(:objects, Types.Object)

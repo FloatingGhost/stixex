@@ -1,4 +1,4 @@
-defmodule Stixex.Types.Hashes do
+defmodule StixEx.Types.Hashes do
   @moduledoc """
   The Hashes type represents 1 or more cryptographic hashes,
   as a special set of key/value pairs.
@@ -27,22 +27,22 @@ defmodule Stixex.Types.Hashes do
   defp valid_key?(key) do
     {:ok, vocabulary} =
       @vocabulary
-      |> Stixex.Vocabulary.get()
+      |> StixEx.Vocabulary.get()
 
     vocabulary
-    |> Stixex.Vocabulary.has_value?(key)
+    |> StixEx.Vocabulary.has_value?(key)
   end
 
   @doc """
   Assert that all keys match what we expect
 
-    iex> Stixex.Types.Hashes.cast(%{"SHA-1": "asdf"})
+    iex> StixEx.Types.Hashes.cast(%{"SHA-1": "asdf"})
     {:ok, %{"SHA-1": "asdf"}}
 
-    iex> Stixex.Types.Hashes.cast(%{"x_custom_hash": "abc"})
+    iex> StixEx.Types.Hashes.cast(%{"x_custom_hash": "abc"})
     {:ok, %{"x_custom_hash": "abc"}}
 
-    iex> Stixex.Types.Hashes.cast(%{"ohno-hash": "abc"})
+    iex> StixEx.Types.Hashes.cast(%{"ohno-hash": "abc"})
     :error
   """
   def cast(%{} = hashes) do

@@ -1,6 +1,6 @@
-defmodule StixexTest.Types.KillChainPhase do
+defmodule StixExTest.Types.KillChainPhase do
   use ExUnit.Case
-  alias Stixex.Types.KillChainPhase
+  alias StixEx.Types.KillChainPhase
 
   test "Example data should be valid" do
     params = %{

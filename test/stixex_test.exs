@@ -1,4 +1,4 @@
-defmodule StixexTest do
+defmodule StixExTest do
   use ExUnit.Case
-  doctest Stixex
+  doctest StixEx
 end

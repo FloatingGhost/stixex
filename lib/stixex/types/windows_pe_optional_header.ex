@@ -1,7 +1,7 @@
-defmodule Stixex.Types.WindowsPEOptionalHeader do
+defmodule StixEx.Types.WindowsPEOptionalHeader do
   use Ecto.Schema
   import Ecto.Changeset
-  import Stixex.Validation
+  import StixEx.Validation
 
   embedded_schema do
     field(:magic_hex, :string)
@@ -33,6 +33,6 @@ defmodule Stixex.Types.WindowsPEOptionalHeader do
     field(:size_of_heap_commit, :integer)
     field(:loader_flags_hex, :string)
     field(:number_of_rva_and_sizes, :integer)
-    field(:hashes, Stixex.Types.Hashes)
+    field(:hashes, StixEx.Types.Hashes)
   end
 end

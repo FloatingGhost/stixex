@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Observable.Extension.RasterImage do
-  use Stixex.Object.Observable.Extension, type_name: "raster-image-ext"
+defmodule StixEx.Object.Observable.Extension.RasterImage do
+  use StixEx.Object.Observable.Extension, type_name: "raster-image-ext"
 
   embedded_schema do
     field(:image_height, :integer)

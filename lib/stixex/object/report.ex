@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Report do
-  use Stixex.Object, type_name: "report"
+defmodule StixEx.Object.Report do
+  use StixEx.Object, type_name: "report"
 
   @required_fields [:labels, :name, :published, :object_refs]
 
@@ -7,7 +7,7 @@ defmodule Stixex.Object.Report do
     common_fields()
     name_and_description()
     field(:published, :utc_datetime)
-    field(:object_refs, {:array, Stixex.Types.Identifier})
+    field(:object_refs, {:array, StixEx.Types.Identifier})
   end
 
   def changeset(struct, params) do

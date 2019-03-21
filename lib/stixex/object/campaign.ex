@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Campaign do
-  use Stixex.Object, type_name: "campaign"
+defmodule StixEx.Object.Campaign do
+  use StixEx.Object, type_name: "campaign"
 
   @required_fields [:name]
 

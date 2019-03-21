@@ -1,4 +1,4 @@
-defmodule Stixex.Types.MarkingDefinition.Statement do
+defmodule StixEx.Types.MarkingDefinition.Statement do
   use Ecto.Schema
   import Ecto.Changeset
 

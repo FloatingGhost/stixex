@@ -1,9 +1,9 @@
-defmodule Stixex.Object.Observable.File do
-  use Stixex.Object.Observable, type_name: "file"
+defmodule StixEx.Object.Observable.File do
+  use StixEx.Object.Observable, type_name: "file"
 
   embedded_schema do
     common_fields()
-    field(:hashes, Stixex.Types.Hashes)
+    field(:hashes, StixEx.Types.Hashes)
     field(:size, :integer)
     field(:name, :string)
     field(:name_enc, :string)
@@ -12,12 +12,12 @@ defmodule Stixex.Object.Observable.File do
     field(:created, :utc_datetime)
     field(:modified, :utc_datetime)
     field(:accessed, :utc_datetime)
-    field(:parent_directory_ref, Stixex.Types.ObjectRef)
+    field(:parent_directory_ref, StixEx.Types.ObjectRef)
     field(:is_encrypted, :boolean)
     field(:encryption_algorithm, :string)
     field(:decryption_key, :string)
-    field(:contains_refs, {:array, Stixex.Types.ObjectRef})
-    field(:content_ref, Stixex.Types.ObjectRef)
+    field(:contains_refs, {:array, StixEx.Types.ObjectRef})
+    field(:content_ref, StixEx.Types.ObjectRef)
   end
 
   def changeset(struct, params) do

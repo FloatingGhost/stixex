@@ -1,4 +1,4 @@
-defmodule Stixex.Validation do
+defmodule StixEx.Validation do
   @moduledoc """
   Some extra validations for checking some of the more esoteric requirements
   demanded by the spec
@@ -8,10 +8,10 @@ defmodule Stixex.Validation do
   @doc """
   Ensure that AT LEAST ONE of the fields is present in the changeset
 
-      iex> Stixex.Validation.validate_one_of(%{changes: %{my_field: 1}}, [:my_field])
+      iex> StixEx.Validation.validate_one_of(%{changes: %{my_field: 1}}, [:my_field])
       %{changes: %{my_field: 1}, valid?: true}
 
-      iex> Stixex.Validation.validate_one_of(%{changes: %{}}, [:my_field])
+      iex> StixEx.Validation.validate_one_of(%{changes: %{}}, [:my_field])
       %{changes: %{}, valid?: false}
   """
   def validate_one_of(%{changes: %{} = changes} = changeset, fields \\ []) do
@@ -48,7 +48,7 @@ defmodule Stixex.Validation do
   end
 
   def validate_values_in_vocab(vocabulary, _field, value) do
-    if Stixex.Vocabulary.has_value?(vocabulary, value) do
+    if StixEx.Vocabulary.has_value?(vocabulary, value) do
       []
     else
       ["is not valid for #{vocabulary}"]

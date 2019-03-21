@@ -1,4 +1,4 @@
-defmodule Stixex.Object.Observable do
+defmodule StixEx.Object.Observable do
   import Ecto.Changeset
 
   @required_fields [:type]
@@ -7,8 +7,8 @@ defmodule Stixex.Object.Observable do
     quote do
       use Ecto.Schema
       import Ecto.Changeset
-      import Stixex.Object.Observable
-      import Stixex.Validation
+      import StixEx.Object.Observable
+      import StixEx.Validation
 
       @primary_key false
       @type_name unquote(opts[:type_name])

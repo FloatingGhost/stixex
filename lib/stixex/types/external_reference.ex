@@ -1,4 +1,4 @@
-defmodule Stixex.Types.ExternalReference do
+defmodule StixEx.Types.ExternalReference do
   @moduledoc """
   External references are used to describe pointers to information
   represented outside of STIX.
@@ -10,7 +10,7 @@ defmodule Stixex.Types.ExternalReference do
 
   use Ecto.Schema
   import Ecto.Changeset
-  import Stixex.Validation
+  import StixEx.Validation
 
   @required_fields [:source_name]
   @required_one_of [:description, :url, :external_id]
@@ -20,7 +20,7 @@ defmodule Stixex.Types.ExternalReference do
     field(:description, :string)
     field(:url, :string)
     field(:external_id, :string)
-    field(:hashes, Stixex.Types.Hashes)
+    field(:hashes, StixEx.Types.Hashes)
   end
 
   def changeset(struct, params) do

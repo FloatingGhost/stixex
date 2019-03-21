@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Observable.Extension.WindowsPEBinary do
-  use Stixex.Object.Observable.Extension, type_name: "windows-pe-binary"
+defmodule StixEx.Object.Observable.Extension.WindowsPEBinary do
+  use StixEx.Object.Observable.Extension, type_name: "windows-pe-binary"
 
   @required_fields [:pe_type]
 
@@ -13,9 +13,9 @@ defmodule Stixex.Object.Observable.Extension.WindowsPEBinary do
     field(:number_of_symbols, :integer)
     field(:size_of_optional_header, :integer)
     field(:characteristics_hex, :string)
-    field(:file_header_hashes, Stixex.Types.Hashes)
-    embeds_one(:optional_header, Stixex.Types.WindowsPEOptionalHeader)
-    embeds_many(:sections, Stixex.Types.WindowsPESection)
+    field(:file_header_hashes, StixEx.Types.Hashes)
+    embeds_one(:optional_header, StixEx.Types.WindowsPEOptionalHeader)
+    embeds_many(:sections, StixEx.Types.WindowsPESection)
   end
 
   def changeset(struct, params) do
@@ -35,7 +35,7 @@ defmodule Stixex.Object.Observable.Extension.WindowsPEBinary do
     |> cast_embed(:optional_header)
     |> cast_embed(:sections)
     |> validate_required(@required_fields)
-    |> validate_format(:pointer_to_symbol_table_hex, hex_format)
-    |> validate_format(:characteristics_hex, hex_format)
+    |> validate_format(:pointer_to_symbol_table_hex, hex_format())
+    |> validate_format(:characteristics_hex, hex_format())
   end
 end

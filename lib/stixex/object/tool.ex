@@ -1,5 +1,5 @@
-defmodule Stixex.Object.Tool do
-  use Stixex.Object, type_name: "tool"
+defmodule StixEx.Object.Tool do
+  use StixEx.Object, type_name: "tool"
 
   @required_fields [:labels, :name]
 

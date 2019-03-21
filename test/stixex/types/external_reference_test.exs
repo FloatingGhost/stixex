@@ -1,7 +1,7 @@
-defmodule StixexTest.Types.ExternalReference do
+defmodule StixExTest.Types.ExternalReference do
   use ExUnit.Case
 
-  alias Stixex.Types.ExternalReference
+  alias StixEx.Types.ExternalReference
 
   test "Example data should be valid" do
     params = %{

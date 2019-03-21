@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.ThreatActorSophistication do
+defmodule StixEx.Vocabulary.ThreatActorSophistication do
   def values do
     ~w[
       none

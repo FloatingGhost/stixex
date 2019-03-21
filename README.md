@@ -1,4 +1,4 @@
-# Stixex
+# StixEx
 
 An implementation of CTI's STIX data format, as defined by http://docs.oasis-open.org/cti/stix/v2.0/
 

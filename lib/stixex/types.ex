@@ -1,4 +1,4 @@
-defmodule Stixex.Types do
+defmodule StixEx.Types do
   import Ecto.Changeset
 
   def put_if_not_set(%{changes: %{} = changes} = changeset, field, value) do

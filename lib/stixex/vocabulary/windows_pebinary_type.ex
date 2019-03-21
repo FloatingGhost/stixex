@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.WindowsPebinaryType do
+defmodule StixEx.Vocabulary.WindowsPebinaryType do
   def values do
     ~w[
       exe

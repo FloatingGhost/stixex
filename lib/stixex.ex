@@ -1,6 +1,6 @@
-defmodule Stixex do
+defmodule StixEx do
   @moduledoc """
-  Documentation for Stixex, a STIX implementation.
+  Documentation for StixEx, a STIX implementation.
 
   Refer to http://docs.oasis-open.org/cti/stix/v2.0/cs01/part1-stix-core/stix-v2.0-cs01-part1-stix-core.html#_Toc496709269
   for specification details

@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.ReportLabel do
+defmodule StixEx.Vocabulary.ReportLabel do
   def values do
     ~w[
       threat-report

@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabulary.ThreatActorLabel do
+defmodule StixEx.Vocabulary.ThreatActorLabel do
   def values do
     ~w[
       activist
