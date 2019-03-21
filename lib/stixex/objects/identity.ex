@@ -6,9 +6,9 @@ defmodule Stixex.Objects.Identity do
   embedded_schema do
     common_fields()
     name_and_description()
-    field :identity_class, :string
-    field :sectors, {:array, :string}
-    field :contact_information, :string
+    field(:identity_class, :string)
+    field(:sectors, {:array, :string})
+    field(:contact_information, :string)
   end
 
   def changeset(struct, params) do

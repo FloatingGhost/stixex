@@ -7,8 +7,8 @@ defmodule Stixex.Objects.Campaign do
     common_fields()
     name_and_description()
     first_and_last_seen()
-    field :objective, :string
-    field :aliases, {:array, :string}
+    field(:objective, :string)
+    field(:aliases, {:array, :string})
   end
 
   def changeset(struct, params) do
@@ -18,4 +18,3 @@ defmodule Stixex.Objects.Campaign do
     |> validate_required(@required_fields)
   end
 end
-

@@ -7,7 +7,7 @@ defmodule Stixex.Objects.Tool do
     common_fields()
     name_and_description()
     kill_chain_phases()
-    field :tool_version, :string
+    field(:tool_version, :string)
   end
 
   def changeset(struct, params) do

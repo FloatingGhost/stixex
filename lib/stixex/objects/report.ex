@@ -6,8 +6,8 @@ defmodule Stixex.Objects.Report do
   embedded_schema do
     common_fields()
     name_and_description()
-    field :published, :utc_datetime
-    field :object_refs, {:array, Stixex.Types.Identifier}
+    field(:published, :utc_datetime)
+    field(:object_refs, {:array, Stixex.Types.Identifier})
   end
 
   def changeset(struct, params) do

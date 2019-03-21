@@ -24,7 +24,15 @@ defmodule Stixex.Objects.Relationship.Sighting do
   def changeset(struct, params) do
     struct
     |> cast_common(params)
-    |> cast(params, [:first_seen, :last_seen, :count, :sighting_of_ref, :observed_data_refs, :where_sighted_refs, :summary])
+    |> cast(params, [
+      :first_seen,
+      :last_seen,
+      :count,
+      :sighting_of_ref,
+      :observed_data_refs,
+      :where_sighted_refs,
+      :summary
+    ])
     |> validate_required(@required_fields)
   end
 end
