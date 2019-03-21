@@ -28,6 +28,6 @@ defmodule Stixex.Types.ExternalReference do
     |> cast(params, [:source_name, :description, :url, :external_id, :hashes])
     |> validate_required(@required_fields)
     |> validate_one_of(@required_one_of)
-    |> validate_url(:url)
+    |> validate_change(:url, &validate_url/2)
   end
 end

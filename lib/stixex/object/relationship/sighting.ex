@@ -1,4 +1,4 @@
-defmodule Stixex.Objects.Relationship.Sighting do
+defmodule Stixex.Object.Relationship.Sighting do
   @moduledoc """
   A Sighting denotes the belief that something in CTI
   (e.g., an indicator, malware, tool, threat actor, etc.) was seen.
@@ -6,7 +6,7 @@ defmodule Stixex.Objects.Relationship.Sighting do
   Sightings are used to track who and what are being targeted,
   how attacks are carried out, and to track trends in attack behavior.
   """
-  use Stixex.Objects, type_name: "sighting"
+  use Stixex.Object, type_name: "sighting"
 
   @required_fields [:sighting_of_ref, :observed_data_refs]
 

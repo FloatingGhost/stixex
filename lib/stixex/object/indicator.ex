@@ -1,5 +1,5 @@
-defmodule Stixex.Objects.Indicator do
-  use Stixex.Objects, type_name: "indicator"
+defmodule Stixex.Object.Indicator do
+  use Stixex.Object, type_name: "indicator"
 
   @required_fields [:labels, :pattern, :valid_from]
 
@@ -23,6 +23,6 @@ defmodule Stixex.Objects.Indicator do
       :kill_chain_phases
     ])
     |> validate_required(@required_fields)
-    |> Stixex.Validation.validate_values_in_vocab(:labels, "indicator-label-ov")
+    |> validate_change(:labels, validate_values_in_vocab("indicator-label-ov"))
   end
 end

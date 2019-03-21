@@ -1,5 +1,5 @@
-defmodule Stixex.Objects.Identity do
-  use Stixex.Objects, type_name: "identity"
+defmodule Stixex.Object.Identity do
+  use Stixex.Object, type_name: "identity"
 
   @required_fields [:name, :identity_class]
 
@@ -16,7 +16,7 @@ defmodule Stixex.Objects.Identity do
     |> cast_common(params)
     |> cast(params, [:name, :description, :identity_class, :sectors, :contact_information])
     |> validate_required(@required_fields)
-    |> Stixex.Validation.validate_values_in_vocab(:identity_class, "identity-class-ov")
-    |> Stixex.Validation.validate_values_in_vocab(:sectors, "industry-sector-ov")
+    |> validate_change(:identity_class, validate_values_in_vocab("identity-class-ov"))
+    |> validate_change(:sectors, validate_values_in_vocab("industry-sector-ov"))
   end
 end

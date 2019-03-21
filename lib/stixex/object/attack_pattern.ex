@@ -1,7 +1,7 @@
-defmodule Stixex.Objects.Malware do
-  use Stixex.Objects, type_name: "malware"
+defmodule Stixex.Object.AttackPattern do
+  use Stixex.Object, type_name: "attack-pattern"
 
-  @required_fields [:labels, :name]
+  @required_fields [:name]
 
   embedded_schema do
     common_fields()
@@ -14,6 +14,5 @@ defmodule Stixex.Objects.Malware do
     |> cast_common(params)
     |> cast(params, [:name, :description, :kill_chain_phases])
     |> validate_required(@required_fields)
-    |> Stixex.Validation.validate_values_in_vocab(:labels, "malware-label-ov")
   end
 end

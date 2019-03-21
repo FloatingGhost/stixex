@@ -1,10 +1,9 @@
-defmodule Stixex.Objects do
+defmodule Stixex.Object do
   @moduledoc """
   Wrapper type to cast to other embeds
   """
   import Ecto.Changeset
 
-  @primary_key false
   @common_field_names [
     :type,
     :id,
@@ -62,7 +61,8 @@ defmodule Stixex.Objects do
     quote do
       use Ecto.Schema
       import Ecto.Changeset
-      import Stixex.Objects
+      import Stixex.Object
+      import Stixex.Validation
 
       @primary_key {:id, Stixex.Types.Identifier, []}
       @type_name unquote(opts[:type_name])

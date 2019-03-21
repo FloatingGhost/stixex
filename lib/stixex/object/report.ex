@@ -1,5 +1,5 @@
-defmodule Stixex.Objects.Report do
-  use Stixex.Objects, type_name: "report"
+defmodule Stixex.Object.Report do
+  use Stixex.Object, type_name: "report"
 
   @required_fields [:labels, :name, :published, :object_refs]
 
@@ -15,7 +15,7 @@ defmodule Stixex.Objects.Report do
     |> cast_common(params)
     |> cast(params, [:name, :description, :published, :object_refs])
     |> validate_required(@required_fields)
-    |> Stixex.Validation.validate_values_in_vocab(:labels, "report-label-ov")
+    |> validate_change(:labels, validate_values_in_vocab("report-label-ov"))
     |> validate_length(:object_refs, min: 1)
   end
 end

@@ -1,5 +1,5 @@
-defmodule Stixex.Objects.Relationship do
-  use Stixex.Objects, type_name: "relationship"
+defmodule Stixex.Object.Relationship do
+  use Stixex.Object, type_name: "relationship"
 
   @required_fields [:type, :relationship_type, :source_ref, :target_ref]
 

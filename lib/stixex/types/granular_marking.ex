@@ -2,7 +2,7 @@ defmodule Stixex.Types.GranularMarking do
   @moduledoc """
   Whereas object markings apply to an entire STIX Object or Marking Definition and all 
   its properties, granular markings allow data markings to be applied to individual 
-  portions of STIX Objects and Marking Definitions. 
+  portions of STIX Object and Marking Definitions. 
 
   Granular markings are specified in the granular_markings property, 
   which is a list of granular-marking instances. 

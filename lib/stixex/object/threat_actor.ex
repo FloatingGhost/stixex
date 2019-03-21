@@ -1,5 +1,5 @@
-defmodule Stixex.Objects.ThreatActor do
-  use Stixex.Objects, type_name: "threat-actor"
+defmodule Stixex.Object.ThreatActor do
+  use Stixex.Object, type_name: "threat-actor"
 
   @required_fields [:labels, :name]
 
@@ -17,7 +17,7 @@ defmodule Stixex.Objects.ThreatActor do
   end
 
   def changeset(struct, params) do
-    changeset
+    struct
     |> cast_common(params)
     |> cast(params, [
       :aliases,
@@ -32,15 +32,15 @@ defmodule Stixex.Objects.ThreatActor do
       :personal_motivations
     ])
     |> validate_required(@required_fields)
-    |> Stixex.Validation.validate_values_in_vocab(:labels, "threat-actor-label-ov")
-    |> Stixex.Validation.validate_values_in_vocab(:roles, "threat-actor-role-ov")
-    |> Stixex.Validation.validate_values_in_vocab(
+    |> validate_change(:labels, validate_values_in_vocab("threat-label-ov"))
+    |> validate_change(:roles, validate_values_in_vocab("threat-actor-role-ov"))
+    |> validate_change(
       :sophistication,
-      "threat-actor-sophistication-ov"
+      validate_values_in_vocab("threat-actor-sophistication-ov")
     )
-    |> Stixex.Validation.validate_values_in_vocab(:resource_level, "attack-resource-level-ov")
-    |> Stixex.Validation.validate_values_in_vocab(:primary_motivation, "attack-motivation-ov")
-    |> Stixex.Validation.validate_values_in_vocab(:secondary_motivations, "attack-motivation-ov")
-    |> Stixex.Validation.validate_values_in_vocab(:personal_motivations, "attack-motivation-ov")
+    |> validate_change(:resource_level, validate_values_in_vocab("attack-resource-level-ov"))
+    |> validate_change(:primary_motivation, validate_values_in_vocab("attack-motivation-ov"))
+    |> validate_change(:secondary_motivations, validate_values_in_vocab("attack-motivation-ov"))
+    |> validate_change(:personal_motivations, validate_values_in_vocab("attack-motivation-ov"))
   end
 end

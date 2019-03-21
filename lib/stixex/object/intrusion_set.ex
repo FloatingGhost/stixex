@@ -1,5 +1,5 @@
-defmodule Stixex.Objects.IntrusionSet do
-  use Stixex.Objects, type_name: "intrusion-set"
+defmodule Stixex.Object.IntrusionSet do
+  use Stixex.Object, type_name: "intrusion-set"
 
   @required_fields [:name]
 
@@ -11,7 +11,7 @@ defmodule Stixex.Objects.IntrusionSet do
     field(:goals, {:array, :string})
     field(:resource_level, :string)
     field(:primary_motivation, :string)
-    field(:secondary_motivation, {:array, :string})
+    field(:secondary_motivations, {:array, :string})
   end
 
   def changeset(struct, params) do
@@ -25,11 +25,11 @@ defmodule Stixex.Objects.IntrusionSet do
       :goals,
       :resource_level,
       :primary_motivation,
-      :secondary_motivation
+      :secondary_motivations
     ])
     |> validate_required(@required_fields)
-    |> Stixex.Validation.validate_values_in_vocab(:resource_level, "attack-resource-level-ov")
-    |> Stixex.Validation.validate_values_in_vocab(:primary_motivation, "attack-motivation-ov")
-    |> Stixex.Validation.validate_values_in_vocab(:secondary_motivation, "attack-motivation-ov")
+    |> validate_change(:resource_level, validate_values_in_vocab("attack-resource-level-ov"))
+    |> validate_change(:primary_motivation, validate_values_in_vocab("attack-motivation-ov"))
+    |> validate_change(:secondary_motivations, validate_values_in_vocab("attack-motivation-ov"))
   end
 end

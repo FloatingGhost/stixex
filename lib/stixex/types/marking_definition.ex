@@ -3,7 +3,7 @@ defmodule Stixex.Types.MarkingDefinition do
   The marking-definition object represents a specific marking.
   Data markings typically represent handling or sharing requirements for data,
   and are applied in the object_marking_refs and granular_markings properties
-  on STIX Objects, which reference a list of IDs for marking-definition objects.
+  on STIX Object, which reference a list of IDs for marking-definition objects.
   """
 
   use Ecto.Schema
