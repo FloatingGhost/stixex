@@ -1,6 +1,16 @@
 # Stixex
 
-**TODO: Add description**
+An implementation of CTI's STIX data format, as defined by http://docs.oasis-open.org/cti/stix/v2.0/
+
+This video response directed at everyone who "designed" this spec: [https://www.youtube.com/watch?v=s2oCV2sM\_ig](https://www.youtube.com/watch?v=s2oCV2sM_ig)
+
+>Why are we still here? Just to suffer?
+>Every night, I feel my coherent data formats, and my naming conventions... even my json
+>The sanity I've lost, the trust in committees I've lost
+>It won't stop hurting
+>It's like they're all still there
+>You feel it too, don't you?
+>I'm gonna make them give back our formats
 
 ## Installation
 
