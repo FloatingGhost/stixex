@@ -10,7 +10,7 @@ defmodule Stixex.Bundle do
 
   embedded_schema do
     field(:type, :string)
-    field(:id, Types.Identifier, autogenerate: true)
+    field(:id, Types.Identifier,autogenerate: {Stixex.Types.Identifier, :generate, [@type_name]})
     field(:spec_version, :string)
 
     embeds_many(:objects, Types.Object)

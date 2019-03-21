@@ -63,6 +63,11 @@ defmodule Stixex.Vocabularies do
       iex> Stixex.Vocabularies.has_value?("hash-algorithm-ov", "notahash")
       false
   """
+  def has_value?(vocabulary, value) when is_list(value) do
+    value
+    |> Enum.all?(&has_value?(vocabulary, &1))
+  end
+
   def has_value?(vocabulary, value) when is_atom(vocabulary) and is_binary(value) do
     Enum.member?(vocabulary.values(), value)
   end

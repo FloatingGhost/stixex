@@ -40,4 +40,16 @@ defmodule Stixex.Validation do
       changeset
     end
   end
+
+  def validate_values_in_vocab(%{changes: %{} = changes} = changeset, field, vocabulary) do
+    if Map.has_key?(changes, field) do
+      if Stixex.Vocabularies.has_value?(vocabulary, changes[field]) do
+        vocabulary
+      else
+        add_error(changeset, field, "is not valid for #{vocabulary}")
+      end
+    else
+      changeset
+    end
+  end
 end

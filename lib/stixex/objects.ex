@@ -2,36 +2,74 @@ defmodule Stixex.Objects do
   @moduledoc """
   Wrapper type to cast to other embeds
   """
-  use Ecto.Schema
   import Ecto.Changeset
 
   @primary_key false
-  @required_fields [:type, :id]
-  @common_field_names [:type, :id, :created_by_ref, :revoked, :labels, :object_marking_refs, :created, :modified]
+  @common_field_names [
+    :type,
+    :id,
+    :created_by_ref,
+    :revoked,
+    :labels,
+    :object_marking_refs,
+    :created,
+    :modified
+  ]
 
   defmacro common_fields do
     quote do
-      field :type, :string
-      field :id, Stixex.Types.Identifier, autogenerate: true
-      field :created_by_ref, Stixex.Types.Identifier
-      field :revoked, :boolean, default: false
-      field :labels, {:array, :string}
-      field :object_marking_refs, {:array, Stixex.Types.Identifier}
-      field :created, :utc_datetime_usec
-      field :modified, :utc_datetime_usec
+      field(:type, :string, default: @type_name)
+      field(:created_by_ref, Stixex.Types.Identifier)
+      field(:revoked, :boolean, default: false)
+      field(:labels, {:array, :string})
+      field(:object_marking_refs, {:array, Stixex.Types.Identifier})
+      field(:created, :utc_datetime)
+      field(:modified, :utc_datetime)
 
       embeds_many(:external_references, Stixex.Types.ExternalReference)
       embeds_many(:granular_markings, Stixex.Types.GranularMarking)
     end
   end
 
-  defmacro __using__(_) do
+  defmacro first_and_last_seen do
+    quote do
+      field :first_seen, :utc_datetime
+      field :last_seen, :utc_datetime
+    end
+  end
+
+  defmacro valid_from_until do
+    quote do
+      field :valid_from, :utc_datetime
+      field :valid_until, :utc_datetime
+    end
+  end
+
+  defmacro name_and_description do
+    quote do
+      field :name, :string
+      field :description, :string
+    end
+  end
+
+  defmacro kill_chain_phases do
+    quote do
+      field(:kill_chain_phases, {:array, Stixex.Types.KillChainPhase})
+    end
+  end
+
+  defmacro __using__(opts) do
     quote do
       use Ecto.Schema
       import Ecto.Changeset
       import Stixex.Objects
 
-      @primary_key false
+      @primary_key {:id, Stixex.Types.Identifier, []}
+      @type_name unquote(opts[:type_name])
+
+      defp generate_id do
+        Stixex.Types.Identifier.generate(unquote(opts[:type_name]))
+      end
     end
   end
 
@@ -42,14 +80,7 @@ defmodule Stixex.Objects do
     |> cast_embed(:granular_markings)
   end
 
-  def validate(changeset) do
-    changeset
-    |> validate_required(@required_fields)
-  end  
-
-  embedded_schema do
-  end
-
-  def changeset(struct, params) do
+  defp truncate_time(timestamp) do
+    DateTime.truncate(timestamp, :millisecond)
   end
 end
