@@ -4,9 +4,9 @@ defmodule Stixex.Object.Observable.Extension.ArchiveFile do
   @required_fields [:contains_refs]
 
   embedded_schema do
-    field :contains_refs, {:array, Stixex.Types.ObjectRef}
-    field :version :string
-    field :comment, :string
+    field(:contains_refs, {:array, Stixex.Types.ObjectRef})
+    field(:version, :string)
+    field(:comment, :string)
   end
 
   def changeset(struct, params) do

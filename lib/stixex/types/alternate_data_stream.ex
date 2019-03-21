@@ -4,9 +4,9 @@ defmodule Stixex.Types.AlternateDataStream do
   @required_fields [:name]
 
   embedded_schema do
-    field :name, :string
-    field :hashes, Stixex.Types.Hashes
-    field :size, :integer
+    field(:name, :string)
+    field(:hashes, Stixex.Types.Hashes)
+    field(:size, :integer)
   end
 
   def changeset(struct, params) do

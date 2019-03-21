@@ -6,10 +6,10 @@ defmodule Stixex.Types.WindowsPESection do
   @required_fields [:name]
 
   embedded_schema do
-    field :name, :string
-    field :size, :integer
-    field :entropy, :float
-    field :hashes, Stixex.Types.Hashes
+    field(:name, :string)
+    field(:size, :integer)
+    field(:entropy, :float)
+    field(:hashes, Stixex.Types.Hashes)
   end
 
   def changeset(struct, params) do
@@ -17,4 +17,4 @@ defmodule Stixex.Types.WindowsPESection do
     |> cast(params, [:name, :size, :entropy, :hashes])
     |> validate_required(@required_fields)
   end
-end  
+end
