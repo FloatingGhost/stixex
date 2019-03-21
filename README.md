@@ -2,7 +2,7 @@
 
 An implementation of CTI's STIX data format, as defined by http://docs.oasis-open.org/cti/stix/v2.0/
 
-This video response directed at everyone who "designed" this spec: [https://www.youtube.com/watch?v=s2oCV2sM\_ig](https://www.youtube.com/watch?v=s2oCV2sM_ig)
+This video response directed at everyone who "designed" this spec: [https://www.youtube.com/watch?v=Yje5oIQr92w](https://www.youtube.com/watch?v=Yje5oIQr92w)
 
 >Why are we still here? Just to suffer?
 >Every night, I feel my coherent data formats, and my naming conventions... even my json
