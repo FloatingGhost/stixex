@@ -31,10 +31,10 @@ defmodule Stixex.Objects do
     end
   end
 
-  defmacro first_and_last_seen do
+  defmacro first_and_last_seen(opts \\ [first_seen: :first_seen, last_seen: :last_seen]) do
     quote do
-      field :first_seen, :utc_datetime
-      field :last_seen, :utc_datetime
+      field unquote(opts[:first_seen]), :utc_datetime
+      field unquote(opts[:last_seen]), :utc_datetime
     end
   end
 
