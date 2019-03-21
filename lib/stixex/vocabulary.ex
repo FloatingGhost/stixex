@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabularies do
+defmodule Stixex.Vocabulary do
   @moduledoc """
   Set vocabularies to restrict the values of certain fields to one of a given list
 
@@ -8,13 +8,13 @@ defmodule Stixex.Vocabularies do
   @doc """
   Get a vocabulary module based on its my-vocab-ov name
 
-      iex> Stixex.Vocabularies.get("hash-algorithm-ov")
-      {:ok, Stixex.Vocabularies.HashAlgorithm}
+      iex> Stixex.Vocabulary.get("hash-algorithm-ov")
+      {:ok, Stixex.Vocabulary.HashAlgorithm}
 
-      iex> Stixex.Vocabularies.get("my-silly-vocab-ov")
+      iex> Stixex.Vocabulary.get("my-silly-vocab-ov")
       {:error, {:does_not_exist, "my-silly-vocab-ov"}}
 
-      iex> Stixex.Vocabularies.get("not-formatted")
+      iex> Stixex.Vocabulary.get("not-formatted")
       {:error, {:invalid_name, "not-formatted"}}
   """
   def get(name) when is_binary(name) do
@@ -54,13 +54,13 @@ defmodule Stixex.Vocabularies do
   @doc """
   Is a given value valid for a vocabulary?
 
-      iex> Stixex.Vocabularies.has_value?(Stixex.Vocabularies.HashAlgorithm, "MD5")
+      iex> Stixex.Vocabulary.has_value?(Stixex.Vocabulary.HashAlgorithm, "MD5")
       true
 
-      iex> Stixex.Vocabularies.has_value?("hash-algorithm-ov", "MD5")
+      iex> Stixex.Vocabulary.has_value?("hash-algorithm-ov", "MD5")
       true
 
-      iex> Stixex.Vocabularies.has_value?("hash-algorithm-ov", "notahash")
+      iex> Stixex.Vocabulary.has_value?("hash-algorithm-ov", "notahash")
       false
   """
   def has_value?(vocabulary, value) when is_list(value) do

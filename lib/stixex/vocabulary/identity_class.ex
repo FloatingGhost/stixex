@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabularies.IdentityClass do
+defmodule Stixex.Vocabulary.IdentityClass do
   def values do
     ~w[
       individual

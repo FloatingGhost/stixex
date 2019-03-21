@@ -1,5 +1,7 @@
-defmodule Stixex.Object.Observable.MimePartType do
-  use Stixex.Object.Observable, type_name: "mime-part-type"
+defmodule Stixex.Types.MimePart do
+  use Ecto.Schema
+  import Ecto.Changeset
+  import Stixex.Validation
 
   embedded_schema do
     field(:body, :string)

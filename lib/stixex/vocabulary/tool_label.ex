@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabularies.ToolLabel do
+defmodule Stixex.Vocabulary.ToolLabel do
   def values do
     ~w[
       denial-of-service

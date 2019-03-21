@@ -48,7 +48,7 @@ defmodule Stixex.Validation do
   end
 
   def validate_values_in_vocab(vocabulary, _field, value) do
-    if Stixex.Vocabularies.has_value?(vocabulary, value) do
+    if Stixex.Vocabulary.has_value?(vocabulary, value) do
       []
     else
       ["is not valid for #{vocabulary}"]

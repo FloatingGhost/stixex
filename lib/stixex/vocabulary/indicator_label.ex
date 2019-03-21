@@ -1,4 +1,4 @@
-defmodule Stixex.Vocabularies.IndicatorLabel do
+defmodule Stixex.Vocabulary.IndicatorLabel do
   def values do
     ~w[
       anomalous-activity

@@ -20,7 +20,7 @@ defmodule Stixex.Object.Observable.EmailMessage do
     field(:body, :string)
     field(:raw_email_ref, Stixex.Types.ObjectRef)
 
-    embeds_many(:body_multipart, Stixex.Object.Observable.MimePartType)
+    embeds_many(:body_multipart, Stixex.Types.MimePartType)
   end
 
   def changeset(struct, params) do
@@ -41,7 +41,7 @@ defmodule Stixex.Object.Observable.EmailMessage do
       :body,
       :raw_email_ref
     ])
-    |> cast_embed(:body_multipart, with: &Stixex.Object.Observable.MimePartType.changeset/2)
+    |> cast_embed(:body_multipart, with: &Stixex.Types.MimePartType.changeset/2)
     |> validate_required(@required_fields)
   end
 end
