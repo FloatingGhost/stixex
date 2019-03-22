@@ -115,10 +115,11 @@ repeated_qualifier ->
     repeats integer times : '$2'.
 
 object_path ->
-    object_type colon first_path_component : {'$1', '$3'}.
+    object_type colon first_path_component : #{type => '$1', path => '$3'}.
 
 object_path ->
-    object_type colon first_path_component object_path_component : {'$1', '$3', '$4'}.
+    object_type colon first_path_component object_path_component :
+        #{type => '$1', path => ['$3' | '$4']}.
 
 object_type ->
     identifier : '$1'.

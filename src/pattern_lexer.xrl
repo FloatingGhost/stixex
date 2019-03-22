@@ -77,8 +77,8 @@ t{QUOTE}[0-9]{4}{HYPHEN}((0[1-9])|(1[012])){HYPHEN}((0[1-9])|([12][0-9])|(3[01])
     S = strip (TokenChars, TokenLen),
     {token, {timestamp, TokenLine, S}}.
 
-[a-zA-Z_][a-zA-Z0-9_]* : {token, {identifier, TokenLine, TokenChars}}.
-[a-zA-Z_][a-zA-Z0-9_-]* : {token, {identifier, TokenLine, TokenChars}}.
+[a-z_][a-z0-9_]* : {token, {identifier, TokenLine, TokenChars}}.
+[a-z_][a-z0-9_-]* : {token, {identifier, TokenLine, TokenChars}}.
 
 {WS}+ : skip_token.
 {COMMENT} : skip_token.
