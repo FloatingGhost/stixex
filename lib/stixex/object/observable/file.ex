@@ -7,7 +7,7 @@ defmodule StixEx.Object.Observable.File do
     field(:size, :integer)
     field(:name, :string)
     field(:name_enc, :string)
-    field(:magic_number_hex, :string)
+    field(:magic_number_hex, StixEx.Types.Hex)
     field(:mime_type, :string)
     field(:created, :utc_datetime)
     field(:modified, :utc_datetime)

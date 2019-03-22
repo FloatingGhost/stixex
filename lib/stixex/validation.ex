@@ -64,12 +64,6 @@ defmodule StixEx.Validation do
     end
   end
 
-  def hex_format do
-    # The string MUST consist of an even number of hexadecimal characters,
-    # which are the digits '0' through '9' and the letters 'a' through 'f'.
-    ~r/([0-9a-f]{2})+/
-  end
-
   def selector_format do
     property_name = "[a-z_]+"
     index = "\\[\\d+\\]"
