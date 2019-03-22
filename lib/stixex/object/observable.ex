@@ -1,8 +1,6 @@
 defmodule StixEx.Object.Observable do
   import Ecto.Changeset
 
-  @required_fields [:type]
-
   defmacro __using__(opts \\ [type_name: "observable"]) do
     quote do
       use Ecto.Schema

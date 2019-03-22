@@ -15,6 +15,47 @@ defmodule StixEx.Object do
     :modified
   ]
 
+  @callback changeset(term, term) :: term
+
+  defmacro __using__(opts) do
+    quote do
+      use Ecto.Schema
+      import Ecto.Changeset
+      import StixEx.Object
+      import StixEx.Validation
+      @behaviour StixEx.Object
+      @primary_key {:id, StixEx.Types.Identifier, []}
+      @type_name unquote(opts[:type_name])
+      @after_compile __MODULE__
+
+      register_type()
+      defp generate_id do
+        StixEx.Types.Identifier.generate(unquote(opts[:type_name]))
+      end
+    end
+  end
+
+  defmacro register_type do
+    quote do
+      def __after_compile__(_env, _bytecode) do
+        StixEx.Object.register_type(@type_name, __MODULE__)
+      end
+    end
+  end
+
+
+  def register_type(type_name, module) do
+    table = 
+      case :ets.whereis(:type_registry) do
+        :undefined ->
+          :ets.new(:type_registry, [:set, :named_table, :public])
+        table -> table
+      end
+
+    IO.inspect type_name
+    :ets.insert(:type_registry, {type_name, module})
+  end
+
   defmacro common_fields do
     quote do
       field(:type, :string, default: @type_name)
@@ -37,13 +78,6 @@ defmodule StixEx.Object do
     end
   end
 
-  defmacro valid_from_until do
-    quote do
-      field(:valid_from, :utc_datetime)
-      field(:valid_until, :utc_datetime)
-    end
-  end
-
   defmacro name_and_description do
     quote do
       field(:name, :string)
@@ -57,22 +91,6 @@ defmodule StixEx.Object do
     end
   end
 
-  defmacro __using__(opts) do
-    quote do
-      use Ecto.Schema
-      import Ecto.Changeset
-      import StixEx.Object
-      import StixEx.Validation
-
-      @primary_key {:id, StixEx.Types.Identifier, []}
-      @type_name unquote(opts[:type_name])
-
-      defp generate_id do
-        StixEx.Types.Identifier.generate(unquote(opts[:type_name]))
-      end
-    end
-  end
-
   def cast_common(changeset, params) do
     changeset
     |> cast(params, @common_field_names)
@@ -83,4 +101,5 @@ defmodule StixEx.Object do
   defp truncate_time(timestamp) do
     DateTime.truncate(timestamp, :millisecond)
   end
+
 end

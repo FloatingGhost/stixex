@@ -5,7 +5,7 @@ defmodule StixEx.Object.Indicator do
 
   embedded_schema do
     name_and_description()
-    valid_from_until()
+    first_and_last_seen(first_seen: :valid_from, last_seen: :valid_until)
     kill_chain_phases()
     field(:pattern, :string)
   end

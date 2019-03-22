@@ -8,4 +8,13 @@ defmodule StixEx do
   Author's note:
     To whoever designed this "standard", go hecc yourself.
   """
+
+  def load(filename) when is_binary(filename) do
+    if File.exists?(filename) do
+      data = File.read(filename)
+      
+    else
+      {:error, {:file_does_not_exist, filename}}
+    end
+  end
 end
