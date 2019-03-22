@@ -5,6 +5,8 @@ defmodule StixEx.Vocabulary do
   See specification section 6
   """
 
+  @callback values :: [String.t]
+
   @doc """
   Get a vocabulary module based on its my-vocab-ov name
 
@@ -22,17 +24,16 @@ defmodule StixEx.Vocabulary do
       module =
         name
         |> String.trim_trailing("-ov")
-        |> kebab_case_to_upper_camel_case()
+        |> StixEx.Utils.kebab_case_to_upper_camel_case()
         |> (&("#{__MODULE__}." <> &1)).()
-        |> String.to_atom()
 
-      has_values? = Keyword.has_key?(module.__info__(:functions), :values)
-
-      if has_values? do
+      try do
+        module = String.to_existing_atom(module)
         {:ok, module}
-      else
-        {:error, {:does_not_exist, name}}
+      rescue
+        _e in ArgumentError -> {:error, {:does_not_exist, name}}
       end
+
     else
       {:error, {:invalid_name, name}}
     end
@@ -86,12 +87,5 @@ defmodule StixEx.Vocabulary do
       {:error, _reason} ->
         false
     end
-  end
-
-  defp kebab_case_to_upper_camel_case(string) do
-    string
-    |> String.split("-")
-    |> Enum.map(&String.capitalize/1)
-    |> Enum.join("")
   end
 end

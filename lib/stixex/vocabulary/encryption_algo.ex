@@ -3,6 +3,9 @@ defmodule StixEx.Vocabulary.EncryptionAlgo do
   An open vocabulary of encryption algorithms.
   """
 
+  @behaviour StixEx.Vocabulary
+
+  @impl StixEx.Vocabulary
   def values do
     ~w[
       AES128-ECB

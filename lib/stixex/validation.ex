@@ -4,6 +4,7 @@ defmodule StixEx.Validation do
   demanded by the spec
   """
   import Ecto.Changeset
+  require Logger
 
   @doc """
   Ensure that AT LEAST ONE of the fields is present in the changeset
@@ -47,11 +48,36 @@ defmodule StixEx.Validation do
     &validate_values_in_vocab(vocabulary, &1, &2)
   end
 
-  def validate_values_in_vocab(vocabulary, _field, value) do
-    if StixEx.Vocabulary.has_value?(vocabulary, value) do
+  @doc """
+  Validate that a given value (or list of values) are members of a vocabulary.
+
+  Will *enforce* key validity if :stixex, :enforce_vocabularies is set.
+  """
+  if Application.get_env(:stixex, :enforce_vocabularies) do
+
+    def validate_values_in_vocab(vocabulary, _field, value) do
+      if StixEx.Vocabulary.has_value?(vocabulary, value) do
+        []
+      else
+        ["is not valid for #{vocabulary}"]
+      end
+    end
+
+  else
+
+    def validate_values_in_vocab(_vocabulary, _field, _value), do: []
+
+  end
+
+  def validate_values_in_enum(enum) do
+    &validate_values_in_enum(enum, &1, &2)
+  end
+
+  def validate_values_in_enum(enum, _field, value) do
+    if StixEx.Enum.has_value?(enum, value) do
       []
     else
-      ["is not valid for #{vocabulary}"]
+      ["is not valid for #{enum}"]
     end
   end
 

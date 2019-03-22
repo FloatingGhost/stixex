@@ -12,6 +12,8 @@ use Mix.Config
 #
 #     config :stixex, key: :value
 #
+config :stixex, enforce_vocabularies: false
+
 # and access this configuration in your application as:
 #
 #     Application.get_env(:stixex, :key)
