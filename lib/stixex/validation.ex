@@ -54,7 +54,6 @@ defmodule StixEx.Validation do
   Will *enforce* key validity if :stixex, :enforce_vocabularies is set.
   """
   if Application.get_env(:stixex, :enforce_vocabularies) do
-
     def validate_values_in_vocab(vocabulary, _field, value) do
       if StixEx.Vocabulary.has_value?(vocabulary, value) do
         []
@@ -62,11 +61,8 @@ defmodule StixEx.Validation do
         ["is not valid for #{vocabulary}"]
       end
     end
-
   else
-
     def validate_values_in_vocab(_vocabulary, _field, _value), do: []
-
   end
 
   def validate_values_in_enum(enum) do

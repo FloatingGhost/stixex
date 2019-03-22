@@ -1,6 +1,6 @@
 defmodule StixEx.Vocabulary.ThreatActorLabel do
   @behaviour StixEx.Vocabulary
-  
+
   @impl StixEx.Vocabulary
   def values do
     ~w[

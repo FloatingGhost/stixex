@@ -5,7 +5,7 @@ defmodule StixEx.Object.Observable.URL do
 
   embedded_schema do
     common_fields()
-    field :value, :string
+    field(:value, :string)
   end
 
   def changeset(struct, params) do

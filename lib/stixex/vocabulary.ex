@@ -5,7 +5,7 @@ defmodule StixEx.Vocabulary do
   See specification section 6
   """
 
-  @callback values :: [String.t]
+  @callback values :: [String.t()]
 
   @doc """
   Get a vocabulary module based on its my-vocab-ov name
@@ -33,7 +33,6 @@ defmodule StixEx.Vocabulary do
       rescue
         _e in ArgumentError -> {:error, {:does_not_exist, name}}
       end
-
     else
       {:error, {:invalid_name, name}}
     end

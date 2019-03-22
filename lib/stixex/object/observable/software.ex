@@ -5,11 +5,11 @@ defmodule StixEx.Object.Observable.Software do
 
   embedded_schema do
     common_fields()
-    field :name, :string
-    field :cpe, :string
-    field :languages, {:array, :string}
-    field :vendor, :string
-    field :version, :string
+    field(:name, :string)
+    field(:cpe, :string)
+    field(:languages, {:array, :string})
+    field(:vendor, :string)
+    field(:version, :string)
   end
 
   def changeset(struct, params) do

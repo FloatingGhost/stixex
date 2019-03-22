@@ -4,7 +4,7 @@ defmodule StixEx.Enum do
   people I don't hecking know.
   """
 
-  @callback values :: [String.t]
+  @callback values :: [String.t()]
 
   @doc """
   Get an enum based on its name
@@ -16,16 +16,15 @@ defmodule StixEx.Enum do
         |> String.trim_trailing("-enum")
         |> StixEx.Utils.kebab_case_to_upper_camel_case()
         |> (&"#{__MODULE__}.#{&1}").()
-  
+
       try do
         module = String.to_existing_atom(module)
         {:ok, module}
       rescue
         _e in ArgumentError -> {:error, {:does_not_exist, name}}
       end
-
     else
-      {:error, {:invalid_name, name}} 
+      {:error, {:invalid_name, name}}
     end
   end
 
@@ -37,5 +36,5 @@ defmodule StixEx.Enum do
     enum
     |> get()
     |> has_value?(value)
-  end 
+  end
 end

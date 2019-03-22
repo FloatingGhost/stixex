@@ -1,6 +1,6 @@
 defmodule StixEx.Vocabulary.ThretActorRole do
   @behaviour StixEx.Vocabulary
-  
+
   @impl StixEx.Vocabulary
   def values do
     ~w[
