@@ -1,6 +1,7 @@
 defmodule StixEx.Types.WindowsRegistryValue do
   use Ecto.Schema
   import Ecto.Changeset
+  import StixEx.Validation
 
   @required_fields [:name]
 

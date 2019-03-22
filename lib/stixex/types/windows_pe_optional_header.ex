@@ -1,7 +1,6 @@
 defmodule StixEx.Types.WindowsPEOptionalHeader do
   use Ecto.Schema
   import Ecto.Changeset
-  import StixEx.Validation
 
   embedded_schema do
     field(:magic_hex, StixEx.Types.Hex)

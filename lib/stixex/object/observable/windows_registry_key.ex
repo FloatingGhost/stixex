@@ -17,5 +17,6 @@ defmodule StixEx.Object.Observable.WindowsRegistryKey do
     |> cast_common(params)
     |> cast(params, [:key, :modified, :creator_user_ref, :number_of_subkeys])
     |> cast_embed(:values)
+    |> validate_required(@required_fields)
   end
 end

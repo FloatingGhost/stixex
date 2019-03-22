@@ -1,7 +1,6 @@
 defmodule StixEx.Types.WindowsPESection do
   use Ecto.Schema
   import Ecto.Changeset
-  import StixEx.Validation
 
   @required_fields [:name]
 
