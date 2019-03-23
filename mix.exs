@@ -22,6 +22,7 @@ defmodule StixEx.MixProject do
   defp deps do
     [
       {:sweet_xml, "~> 0.6.6"},
+      {:jason, "~> 1.1"},
       {:ecto, "~> 3.0.7"},
       {:valid_url, "~> 0.1.2"}
     ]

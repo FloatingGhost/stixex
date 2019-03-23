@@ -15,17 +15,24 @@ defmodule StixEx.Bundle do
     field(:type, :string)
     field(:id, Types.Identifier, autogenerate: {Types.Identifier, :generate, [@type_name]})
     field(:spec_version, :string)
-
-    embeds_many(:objects, Types.Object)
+    field(:objects, {:array, StixEx.Types.Object})
   end
 
   def changeset(struct, params) do
     struct
-    |> cast(params, [:id, :spec_version])
-    |> Utils.put_if_not_set(:type_name, @type_name)
+    |> cast(params, [:id, :spec_version, :objects])
+    |> Utils.put_if_not_set(:type, @type_name)
     |> Utils.put_if_not_set(:spec_version, @spec_version)
-    |> cast_embed(:objects, with: &Object.changeset/2)
     |> validate_length(:objects, min: 1)
     |> validate_required(@required_fields)
   end
+
+  def new(params) do
+    this_changeset = changeset(%StixEx.Bundle{}, params)
+    if this_changeset.valid? do
+      Ecto.Changeset.apply_action(this_changeset, :insert)
+    else
+      {:error, {:invalid, this_changeset}}
+    end
+  end  
 end

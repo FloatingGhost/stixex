@@ -56,12 +56,18 @@ defmodule StixEx.TypeRegistry do
       iex> StixEx.TypeRegistry.get("my-type")
       {:error, {:does_not_exist, "my-type"}}
   """
-  def get(type_name) do
+  def get(type_name) when is_atom(type_name) do
     if Map.has_key?(@registry, type_name) do
       {:ok, Map.get(@registry, type_name)}
     else
       {:error, {:does_not_exist, type_name}}
     end
+  end
+
+  def get(type_name) when is_binary(type_name) do
+    type_name
+    |> String.to_atom()
+    |> get()
   end
 end
      

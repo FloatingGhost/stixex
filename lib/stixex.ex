@@ -9,12 +9,43 @@ defmodule StixEx do
     To whoever designed this "standard", go hecc yourself.
   """
 
-  def load(filename) when is_binary(filename) do
+  @doc """
+  Load a stix bundle from file
+
+      iex> StixEx.load("my_bundle.json")
+      {:ok, %StixEx.Bundle{
+        # stuff here
+      }
+  """
+  def load(filename, opts \\ [format: :autodetect]) when is_binary(filename) do
+    filetype = if opts[:format] == :autodetect do
+      {:ok, format} = infer_filetype(filename)
+      format
+    else
+      opts[:format]
+    end
+
     if File.exists?(filename) do
-      data = File.read(filename)
-      
+      {:ok, data} = File.read(filename)
+      {:ok, parsed} = parse_file_data(data, filetype)    
+      StixEx.Bundle.new(parsed)
     else
       {:error, {:file_does_not_exist, filename}}
     end
+  end
+
+  defp infer_filetype(filename) do
+    filename
+    |> String.split(".")
+    |> List.last()
+    |> case do
+      "json" -> {:ok, :json}
+      "xml" -> {:ok, :xml}
+      _other -> :error
+    end
+  end
+
+  defp parse_file_data(data, :json) do
+    Jason.decode(data)
   end
 end

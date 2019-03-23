@@ -1,7 +1,7 @@
 defmodule StixEx.Object.Relationship do
   use StixEx.Object, type_name: "relationship"
 
-  @required_fields [:type, :relationship_type, :source_ref, :target_ref]
+  @required_fields [:relationship_type, :source_ref, :target_ref]
 
   embedded_schema do
     common_fields()
@@ -16,6 +16,7 @@ defmodule StixEx.Object.Relationship do
   def changeset(struct, params) do
     struct
     |> cast_common(params)
+    |> cast(params, [:relationship_type, :description, :source_ref, :target_ref])
     |> validate_required(@required_fields)
     |> validate_format(:relationship_type, ~r/[a-z0-9-]+/)
   end
