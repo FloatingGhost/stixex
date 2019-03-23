@@ -1,6 +1,7 @@
 defmodule StixEx.Bundle do
   use Ecto.Schema
   import Ecto.Changeset
+
   alias StixEx.{
     Types,
     Utils
@@ -29,10 +30,11 @@ defmodule StixEx.Bundle do
 
   def new(params) do
     this_changeset = changeset(%StixEx.Bundle{}, params)
+
     if this_changeset.valid? do
       Ecto.Changeset.apply_action(this_changeset, :insert)
     else
       {:error, {:invalid, this_changeset}}
     end
-  end  
+  end
 end

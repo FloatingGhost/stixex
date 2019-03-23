@@ -14,18 +14,20 @@ defmodule StixEx.Pattern do
     |> case do
       {:ok, tokens, _} ->
         extract(tokens)
-      error -> error
+
+      error ->
+        error
     end
   end
-        
+
   def extract(tokens) do
     tokens
     |> :pattern_parser.parse()
   end
-        
+
   def lex(str) do
     str
     |> to_charlist()
     |> :pattern_lexer.string()
   end
-end 
+end

@@ -6,6 +6,7 @@ defmodule StixEx.TypeRegistry do
   """
 
   alias StixEx.Object
+
   alias StixEx.Object.{
     Observable,
     Relationship
@@ -42,9 +43,8 @@ defmodule StixEx.TypeRegistry do
     "network-traffic": Observable.NetworkTraffic,
     malware: ObjectkMalware,
     tool: Object.Tool,
-
     relationship: Relationship,
-    sighting: Relationship.Sighting,
+    sighting: Relationship.Sighting
   }
 
   @doc """
@@ -70,4 +70,3 @@ defmodule StixEx.TypeRegistry do
     |> get()
   end
 end
-     

@@ -7,8 +7,8 @@ defmodule StixEx.Utils do
     else
       changeset
       |> put_change(field, value)
-    end  
-  end 
+    end
+  end
 
   def kebab_case_to_upper_camel_case(string) do
     string

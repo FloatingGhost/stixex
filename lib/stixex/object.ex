@@ -5,6 +5,7 @@ defmodule StixEx.Object do
   and they all sit in the same array. 
   """
   import Ecto.Changeset
+
   @common_field_names [
     :type,
     :id,
@@ -69,10 +70,10 @@ defmodule StixEx.Object do
   defmacro common_functions do
     quote do
       def new(params) do
-        new_changeset = 
+        new_changeset =
           changeset(%__MODULE__{}, params)
           |> StixEx.Utils.put_if_not_set(:id, StixEx.Types.Identifier.generate(@type_name))
-        
+
         if new_changeset.valid? do
           Ecto.Changeset.apply_action(new_changeset, :insert)
         else
@@ -92,5 +93,4 @@ defmodule StixEx.Object do
   defp truncate_time(timestamp) do
     DateTime.truncate(timestamp, :millisecond)
   end
-
 end

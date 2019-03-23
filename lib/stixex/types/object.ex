@@ -13,7 +13,7 @@ defmodule StixEx.Types.Object do
   end
 
   def cast(%{"type" => type} = struct) do
-    IO.puts type
+    IO.puts(type)
     {:ok, type} = StixEx.TypeRegistry.get(type)
     type.new(struct)
   end

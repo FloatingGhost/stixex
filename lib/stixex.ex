@@ -18,16 +18,17 @@ defmodule StixEx do
       }
   """
   def load(filename, opts \\ [format: :autodetect]) when is_binary(filename) do
-    filetype = if opts[:format] == :autodetect do
-      {:ok, format} = infer_filetype(filename)
-      format
-    else
-      opts[:format]
-    end
+    filetype =
+      if opts[:format] == :autodetect do
+        {:ok, format} = infer_filetype(filename)
+        format
+      else
+        opts[:format]
+      end
 
     if File.exists?(filename) do
       {:ok, data} = File.read(filename)
-      {:ok, parsed} = parse_file_data(data, filetype)    
+      {:ok, parsed} = parse_file_data(data, filetype)
       StixEx.Bundle.new(parsed)
     else
       {:error, {:file_does_not_exist, filename}}
