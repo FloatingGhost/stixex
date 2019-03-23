@@ -14,6 +14,8 @@ defmodule StixEx.Object.IntrusionSet do
     field(:secondary_motivations, {:array, :string})
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

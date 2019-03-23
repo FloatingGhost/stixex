@@ -10,6 +10,8 @@ defmodule StixEx.Object.Indicator do
     field(:pattern, :string)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

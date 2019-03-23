@@ -1,9 +1,10 @@
 defmodule StixEx.Object do
   @moduledoc """
-  Wrapper type to cast to other embeds
+  An object is a set of STIX data with a set schema.
+  The awkward part here is that is can be any kind of type,
+  and they all sit in the same array. 
   """
   import Ecto.Changeset
-
   @common_field_names [
     :type,
     :id,
@@ -15,6 +16,7 @@ defmodule StixEx.Object do
     :modified
   ]
 
+  @callback new(term) :: term
   @callback changeset(term, term) :: term
 
   defmacro __using__(opts) do
@@ -26,34 +28,7 @@ defmodule StixEx.Object do
       @behaviour StixEx.Object
       @primary_key {:id, StixEx.Types.Identifier, []}
       @type_name unquote(opts[:type_name])
-      @after_compile __MODULE__
-
-      register_type()
-      defp generate_id do
-        StixEx.Types.Identifier.generate(unquote(opts[:type_name]))
-      end
     end
-  end
-
-  defmacro register_type do
-    quote do
-      def __after_compile__(_env, _bytecode) do
-        StixEx.Object.register_type(@type_name, __MODULE__)
-      end
-    end
-  end
-
-
-  def register_type(type_name, module) do
-    table = 
-      case :ets.whereis(:type_registry) do
-        :undefined ->
-          :ets.new(:type_registry, [:set, :named_table, :public])
-        table -> table
-      end
-
-    IO.inspect type_name
-    :ets.insert(:type_registry, {type_name, module})
   end
 
   defmacro common_fields do
@@ -88,6 +63,22 @@ defmodule StixEx.Object do
   defmacro kill_chain_phases do
     quote do
       field(:kill_chain_phases, {:array, StixEx.Types.KillChainPhase})
+    end
+  end
+
+  defmacro common_functions do
+    quote do
+      def new(params) do
+        new_changeset = 
+          changeset(%__MODULE__{}, params)
+          |> StixEx.Utils.put_if_not_set(:id, StixEx.Types.Identifier.generate(@type_name))
+        
+        if new_changeset.valid? do
+          Ecto.Changeset.apply_action(new_changeset, :insert)
+        else
+          {:error, {:invalid, new_changeset}}
+        end
+      end
     end
   end
 

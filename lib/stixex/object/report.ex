@@ -10,6 +10,8 @@ defmodule StixEx.Object.Report do
     field(:object_refs, {:array, StixEx.Types.Identifier})
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

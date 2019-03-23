@@ -9,6 +9,8 @@ defmodule StixEx.Object.AttackPattern do
     kill_chain_phases()
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

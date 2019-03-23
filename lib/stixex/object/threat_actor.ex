@@ -16,6 +16,8 @@ defmodule StixEx.Object.ThreatActor do
     field(:personal_motivations, {:array, :string})
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

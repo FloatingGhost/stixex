@@ -11,6 +11,8 @@ defmodule StixEx.Object.Relationship do
     field(:target_ref, StixEx.Types.Identifier)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

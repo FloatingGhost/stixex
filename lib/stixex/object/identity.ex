@@ -11,6 +11,8 @@ defmodule StixEx.Object.Identity do
     field(:contact_information, :string)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

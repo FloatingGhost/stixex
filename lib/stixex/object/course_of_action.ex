@@ -8,6 +8,8 @@ defmodule StixEx.Object.CourseOfAction do
     name_and_description()
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

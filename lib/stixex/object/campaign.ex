@@ -11,6 +11,8 @@ defmodule StixEx.Object.Campaign do
     field(:aliases, {:array, :string})
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

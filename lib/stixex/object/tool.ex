@@ -10,6 +10,8 @@ defmodule StixEx.Object.Tool do
     field(:tool_version, :string)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)
