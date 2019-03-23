@@ -33,10 +33,11 @@ defmodule StixEx.MixProject do
 
   defp package() do
     [
-      licences: ["MIT"],
+      licenses: ["MIT"],
       links: %{
         "specification" => "http://docs.oasis-open.org/cti/stix/v2.0/",
-        "introduction-to-stix" => "https://oasis-open.github.io/cti-documentation/stix/intro.html"
+        "introduction-to-stix" => "https://oasis-open.github.io/cti-documentation/stix/intro.html",
+        "github" => "https://github.com/FloatingGhost/stixex"
       }
     ]
   end
