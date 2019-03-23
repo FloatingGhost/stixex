@@ -4,10 +4,13 @@ defmodule StixEx.MixProject do
   def project do
     [
       app: :stixex,
+      description: "Implementation of CTI's STIX format",
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      package: package(),
+      source_url: "https://github.com/FloatingGhost/stixex"
     ]
   end
 
@@ -25,6 +28,16 @@ defmodule StixEx.MixProject do
       {:jason, "~> 1.1"},
       {:ecto, "~> 3.0.7"},
       {:valid_url, "~> 0.1.2"}
+    ]
+  end
+
+  defp package() do
+    [
+      licences: ["MIT"],
+      links: %{
+        "specification" => "http://docs.oasis-open.org/cti/stix/v2.0/",
+        "introduction-to-stix" => "https://oasis-open.github.io/cti-documentation/stix/intro.html"
+      }
     ]
   end
 end
