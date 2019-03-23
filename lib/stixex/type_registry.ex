@@ -23,6 +23,7 @@ defmodule StixEx.TypeRegistry do
     "threat-actor": Object.ThreatActor,
     "course-of-action": Object.CourseOfAction,
     "attack-pattern": Object.AttackPattern,
+    "marking-definition": Object.MarkingDefinition,
     process: Observable.Process,
     mutex: Observable.Mutex,
     "autonomous-system": Observable.AutonomousSystem,
@@ -41,7 +42,7 @@ defmodule StixEx.TypeRegistry do
     "email-message": Observable.EmailMessage,
     "domain-name": Observable.DomainName,
     "network-traffic": Observable.NetworkTraffic,
-    malware: ObjectkMalware,
+    malware: Object.Malware,
     tool: Object.Tool,
     relationship: Relationship,
     sighting: Relationship.Sighting

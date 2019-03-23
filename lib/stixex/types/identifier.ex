@@ -9,11 +9,15 @@ defmodule StixEx.Types.Identifier do
   """
   @behaviour Ecto.Type
   @uuid4_regex ~r/[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}/
+  @lazy_uuid_regex ~r/[a-f0-9-]{36}/
 
   def type, do: :string
 
   defp valid_uuid?(uuid) do
-    @uuid4_regex
+    # Ok time to cry
+    # the FUGGING example stix documents do NOT provide valid UUID4
+    # So we'll have to lazy match until I shout at them to fix it
+    @lazy_uuid_regex
     |> Regex.match?(uuid)
   end
 

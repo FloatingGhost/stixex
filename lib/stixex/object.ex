@@ -63,7 +63,7 @@ defmodule StixEx.Object do
 
   defmacro kill_chain_phases do
     quote do
-      field(:kill_chain_phases, {:array, StixEx.Types.KillChainPhase})
+      embeds_many(:kill_chain_phases, StixEx.Types.KillChainPhase)
     end
   end
 

@@ -13,7 +13,7 @@ defmodule StixEx do
   Load a stix bundle from file
 
       iex> StixEx.load("my_bundle.json")
-      {:ok, %StixEx.Bundle{
+      %{:ok, %StixEx.Bundle{
         # stuff here
       }
   """

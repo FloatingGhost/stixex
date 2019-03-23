@@ -1,7 +1,7 @@
-defmodule StixExTest.Types.MarkingDefinition do
+defmodule StixExTest.Object.MarkingDefinition do
   use ExUnit.Case
 
-  alias StixEx.Types.MarkingDefinition
+  alias StixEx.Object.MarkingDefinition
 
   test "Example data should be valid" do
     params = %{

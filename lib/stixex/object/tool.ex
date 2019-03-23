@@ -15,7 +15,8 @@ defmodule StixEx.Object.Tool do
   def changeset(struct, params) do
     struct
     |> cast_common(params)
-    |> cast(params, [:name, :description, :kill_chain_phases, :tool_version])
+    |> cast(params, [:name, :description, :tool_version])
+    |> cast_embed(:kill_chain_phases)
     |> validate_required(@required_fields)
     |> validate_change(:labels, validate_values_in_vocab("tool-label-ov"))
   end

@@ -1,4 +1,4 @@
-defmodule StixEx.Types.MarkingDefinition do
+defmodule StixEx.Object.MarkingDefinition do
   @moduledoc """
   The marking-definition object represents a specific marking.
   Data markings typically represent handling or sharing requirements for data,
@@ -8,7 +8,7 @@ defmodule StixEx.Types.MarkingDefinition do
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias StixEx.Types.MarkingDefinition
+  alias StixEx.Object.MarkingDefinition
 
   @required_fields [:type, :id, :created, :definition_type, :definition]
   @primary_key false
@@ -23,6 +23,18 @@ defmodule StixEx.Types.MarkingDefinition do
     field(:definition, :map)
     embeds_many(:granular_markings, StixEx.Types.GranularMarking)
     embeds_many(:external_references, StixEx.Types.ExternalReference)
+  end
+
+  def new(params) do
+    new_changeset =
+      changeset(%__MODULE__{}, params)
+      |> StixEx.Utils.put_if_not_set(:id, StixEx.Types.Identifier.generate(@type_name))
+
+    if new_changeset.valid? do
+      Ecto.Changeset.apply_action(new_changeset, :insert)
+    else
+      {:error, {:invalid, new_changeset}}
+    end
   end
 
   def changeset(struct, params) do

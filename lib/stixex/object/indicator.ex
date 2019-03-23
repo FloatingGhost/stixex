@@ -4,6 +4,7 @@ defmodule StixEx.Object.Indicator do
   @required_fields [:labels, :pattern, :valid_from]
 
   embedded_schema do
+    common_fields()
     name_and_description()
     first_and_last_seen(first_seen: :valid_from, last_seen: :valid_until)
     kill_chain_phases()
@@ -21,9 +22,9 @@ defmodule StixEx.Object.Indicator do
       :description,
       :valid_from,
       :valid_until,
-      :pattern,
-      :kill_chain_phases
+      :pattern
     ])
+    |> cast_embed(:kill_chain_phases)
     |> validate_required(@required_fields)
     |> validate_change(:labels, validate_values_in_vocab("indicator-label-ov"))
   end

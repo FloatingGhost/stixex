@@ -14,7 +14,8 @@ defmodule StixEx.Object.AttackPattern do
   def changeset(struct, params) do
     struct
     |> cast_common(params)
-    |> cast(params, [:name, :description, :kill_chain_phases])
+    |> cast(params, [:name, :description])
+    |> cast_embed(:kill_chain_phases)
     |> validate_required(@required_fields)
   end
 end

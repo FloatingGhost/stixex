@@ -1,4 +1,4 @@
-defmodule StixEx.Types.MarkingDefinition.TLP do
+defmodule StixEx.Object.MarkingDefinition.TLP do
   use Ecto.Schema
   import Ecto.Changeset
 
