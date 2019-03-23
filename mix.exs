@@ -24,6 +24,7 @@ defmodule StixEx.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, ">= 0.0.0", only: :dev},
       {:sweet_xml, "~> 0.6.6"},
       {:jason, "~> 1.1"},
       {:ecto, "~> 3.0.7"},
