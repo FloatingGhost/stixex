@@ -74,4 +74,10 @@ defmodule StixEx.Object do
   defp truncate_time(timestamp) do
     DateTime.truncate(timestamp, :millisecond)
   end
+
+  def new(type_name, %{} = params) do
+    with {:ok, type} = StixEx.TypeRegistry.get(type_name) do
+      type.new(params)
+    end
+  end
 end

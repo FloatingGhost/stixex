@@ -20,20 +20,37 @@ defmodule StixEx.Bundle do
 
   embedded_schema do
     field(:type, :string)
-    field(:id, Types.Identifier, autogenerate: {Types.Identifier, :generate, [@type_name]})
+    field(:id, Types.Identifier)
     field(:spec_version, :string)
-    field(:objects, {:array, StixEx.Types.Object})
+    field(:objects, {:array, StixEx.Types.Object}, default: [])
   end
 
   def changeset(struct, params) do
     struct
     |> cast(params, [:id, :spec_version, :objects])
+    |> Utils.put_if_not_set(:id, StixEx.Types.Identifier.generate(@type_name))
     |> Utils.put_if_not_set(:type, @type_name)
     |> Utils.put_if_not_set(:spec_version, @spec_version)
     |> validate_length(:objects, min: 1)
     |> validate_required(@required_fields)
   end
 
+  @doc """
+  Create a new bundle
+
+      iex> StixEx.Bundle.new()
+      {:ok, %StixEx.Bundle{}}
+  """
+  def new do
+    new(%{})
+  end
+
+  @doc """
+  Create a new bundle with specified parameters
+
+      iex> StixEx.Bundle.new(%{objects: []})
+      {:ok, %StixEx.Bundle{}}
+  """
   def new(params) do
     this_changeset = changeset(%StixEx.Bundle{}, params)
 
@@ -43,4 +60,34 @@ defmodule StixEx.Bundle do
       {:error, {:invalid, this_changeset}}
     end
   end
+
+  @doc """
+  Add an object to a stix bundle
+
+      iex> {:ok, my_object} = StixEx.Object.Observable.IPv4Addr.new(%{value: "8.8.8.8"})
+      iex> {:ok, my_bundle} = StixEx.Bundle.new()
+      iex> StixEx.Bundle.add_object(my_bundle, my_object)
+  """
+  def add_object(%StixEx.Bundle{} = bundle, %_object{type: _} = object) do
+    bundle
+    |> Map.put(:objects, [object | bundle.objects])
+  end
+
+  def add_object(%StixEx.Bundle{} = bundle, %{"type" => type} = object) do
+    object =
+      StixEx.Object.new(type, object)
+    add_object(bundle, object)
+  end
+
+  @doc """
+  Add multiple objects to a bundle
+  """
+  def add_objects(%StixEx.Bundle{} = bundle, []), do: bundle
+
+  def add_objects(%StixEx.Bundle{} = bundle, [object | rest]) do
+    bundle
+    |> add_object(object)
+    |> add_objects(rest)
+  end
+
 end

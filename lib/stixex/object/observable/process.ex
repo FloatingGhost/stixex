@@ -18,6 +18,8 @@ defmodule StixEx.Object.Observable.Process do
     field(:child_refs, {:array, StixEx.Types.ObjectRef})
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

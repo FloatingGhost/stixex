@@ -10,6 +10,8 @@ defmodule StixEx.Object.Observable.AutonomousSystem do
     field(:rir, :string)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

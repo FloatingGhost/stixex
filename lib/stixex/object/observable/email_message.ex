@@ -23,6 +23,8 @@ defmodule StixEx.Object.Observable.EmailMessage do
     embeds_many(:body_multipart, StixEx.Types.MimePart)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

@@ -4,8 +4,11 @@ defmodule StixEx.Object.Observable.Mutex do
   @required_fields [:name]
 
   embedded_schema do
+    common_fields()
     field(:name, :string)
   end
+
+  common_functions()
 
   def changeset(struct, params) do
     struct

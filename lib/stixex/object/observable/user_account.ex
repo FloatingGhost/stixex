@@ -20,6 +20,8 @@ defmodule StixEx.Object.Observable.UserAccount do
     field(:account_last_login, :utc_datetime)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

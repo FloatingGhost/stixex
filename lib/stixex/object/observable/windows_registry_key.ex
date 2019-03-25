@@ -12,6 +12,8 @@ defmodule StixEx.Object.Observable.WindowsRegistryKey do
     embeds_many(:values, StixEx.Types.WindowsRegistryValue)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

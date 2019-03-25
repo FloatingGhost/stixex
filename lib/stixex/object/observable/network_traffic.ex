@@ -24,6 +24,8 @@ defmodule StixEx.Object.Observable.NetworkTraffic do
     field(:encapulated_by_ref, StixEx.Types.ObjectRef)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

@@ -8,6 +8,8 @@ defmodule StixEx.Object.Observable.MACAddr do
     field(:value, :string)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

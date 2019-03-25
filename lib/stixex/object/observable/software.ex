@@ -12,6 +12,8 @@ defmodule StixEx.Object.Observable.Software do
     field(:version, :string)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

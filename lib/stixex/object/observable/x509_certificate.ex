@@ -18,6 +18,8 @@ defmodule StixEx.Object.Observable.X509Certificate do
     embeds_one(:x509_v3_extensions, StixEx.Types.X509V3Extensions)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

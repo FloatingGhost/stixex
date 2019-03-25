@@ -15,6 +15,8 @@ defmodule StixEx.Object.Observable.Artifact do
     field(:hashes, StixEx.Types.Hashes)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

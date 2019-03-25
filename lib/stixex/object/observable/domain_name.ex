@@ -9,6 +9,8 @@ defmodule StixEx.Object.Observable.DomainName do
     field(:resolves_to_refs, {:array, StixEx.Types.ObjectRef})
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)

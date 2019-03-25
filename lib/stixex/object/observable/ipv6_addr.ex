@@ -10,6 +10,8 @@ defmodule StixEx.Object.Observable.IPv6Addr do
     field(:belongs_to_ref, StixEx.Types.ObjectRef)
   end
 
+  common_functions()
+
   def changeset(struct, params) do
     struct
     |> cast_common(params)
