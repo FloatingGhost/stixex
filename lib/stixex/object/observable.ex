@@ -24,8 +24,7 @@ defmodule StixEx.Object.Observable do
   defmacro common_functions do
     quote do
       def new(params) do
-        new_changeset =
-          changeset(%__MODULE__{}, params)
+        new_changeset = changeset(%__MODULE__{}, params)
 
         if new_changeset.valid? do
           Ecto.Changeset.apply_action(new_changeset, :insert)

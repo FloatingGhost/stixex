@@ -74,8 +74,7 @@ defmodule StixEx.Bundle do
   end
 
   def add_object(%StixEx.Bundle{} = bundle, %{"type" => type} = object) do
-    object =
-      StixEx.Object.new(type, object)
+    object = StixEx.Object.new(type, object)
     add_object(bundle, object)
   end
 

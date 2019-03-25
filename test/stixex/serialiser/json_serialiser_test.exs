@@ -5,10 +5,10 @@ defmodule StixExTest.Serialiser.JSON do
     {:ok, files} = File.ls("test/data/")
 
     for file <- files do
-      StixEx.from_file("test/data/" <> file)
+      StixEx.Bundle.from_file("test/data/" <> file)
       |> case do
         {:ok, bundle} ->
-          {:ok, data} = StixEx.to_string(bundle, serialiser: StixEx.Serialiser.JSON)
+          {:ok, data} = StixEx.Bundle.to_string(bundle, serialiser: StixEx.Serialiser.JSON)
 
         {:error, errors} ->
           IO.inspect(errors)
