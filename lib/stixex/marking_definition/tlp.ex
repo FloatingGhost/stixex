@@ -1,7 +1,8 @@
-defmodule StixEx.Object.MarkingDefinition.TLP do
+defmodule StixEx.MarkingDefinition.TLP do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive Jason.Encoder
   @valid_colours ~w[white green amber red]
   @required_fields [:tlp]
 

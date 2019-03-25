@@ -10,6 +10,7 @@ defmodule StixEx.Object.Observable do
 
       @primary_key false
       @type_name unquote(opts[:type_name])
+      @derive Jason.Encoder
     end
   end
 

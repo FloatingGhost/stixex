@@ -2,6 +2,8 @@ defmodule StixEx.Types.WindowsPEOptionalHeader do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive Jason.Encoder
+
   embedded_schema do
     field(:magic_hex, StixEx.Types.Hex)
     field(:major_linker_version, :integer)

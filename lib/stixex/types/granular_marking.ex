@@ -18,6 +18,7 @@ defmodule StixEx.Types.GranularMarking do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive Jason.Encoder
   @required_fields [:marking_ref, :selectors]
 
   embedded_schema do

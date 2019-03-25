@@ -3,6 +3,7 @@ defmodule StixEx.Types.WindowsRegistryValue do
   import Ecto.Changeset
   import StixEx.Validation
 
+  @derive Jason.Encoder
   @required_fields [:name]
 
   embedded_schema do

@@ -2,6 +2,7 @@ defmodule StixEx.Types.WindowsPESection do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive Jason.Encoder
   @required_fields [:name]
 
   embedded_schema do

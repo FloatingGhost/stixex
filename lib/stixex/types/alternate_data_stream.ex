@@ -1,6 +1,8 @@
 defmodule StixEx.Types.AlternateDataStream do
-  use StixEx.Object.Observable.Extension, type_name: "alternate-data-stream-type"
+  use Ecto.Schema
+  import Ecto.Changeset
 
+  @derive Jason.Encoder
   @required_fields [:name]
 
   embedded_schema do

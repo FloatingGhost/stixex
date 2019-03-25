@@ -8,6 +8,7 @@ defmodule StixEx.Types.KillChainPhase do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive Jason.Encoder
   @required_fields [:kill_chain_name, :phase_name]
 
   embedded_schema do

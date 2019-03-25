@@ -66,4 +66,8 @@ defmodule StixEx do
   defp parse_file_data(data, :json) do
     Jason.decode(data)
   end
+
+  def to_string(bundle, opts \\ [serialiser: StixEx.Serialiser.JSON]) do
+    StixEx.Serialiser.dump(opts[:serialiser], bundle)
+  end
 end

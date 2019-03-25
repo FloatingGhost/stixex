@@ -13,6 +13,7 @@ defmodule StixEx.TypeRegistry do
   }
 
   @registry %{
+    "marking-definition": StixEx.MarkingDefinition,
     report: Object.Report,
     campaign: Object.Campaign,
     vulnerability: Object.Vulnerability,
@@ -23,7 +24,6 @@ defmodule StixEx.TypeRegistry do
     "threat-actor": Object.ThreatActor,
     "course-of-action": Object.CourseOfAction,
     "attack-pattern": Object.AttackPattern,
-    "marking-definition": Object.MarkingDefinition,
     process: Observable.Process,
     mutex: Observable.Mutex,
     "autonomous-system": Observable.AutonomousSystem,

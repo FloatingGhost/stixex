@@ -1,4 +1,4 @@
-defmodule StixEx.Object.MarkingDefinition do
+defmodule StixEx.MarkingDefinition do
   @moduledoc """
   The marking-definition object represents a specific marking.
   Data markings typically represent handling or sharing requirements for data,
@@ -8,14 +8,15 @@ defmodule StixEx.Object.MarkingDefinition do
 
   use Ecto.Schema
   import Ecto.Changeset
-  alias StixEx.Object.MarkingDefinition
+  alias StixEx.MarkingDefinition
 
+  @derive Jason.Encoder
   @required_fields [:type, :id, :created, :definition_type, :definition]
-  @primary_key false
+  @type_name "marking-definition"
+  @primary_key {:id, StixEx.Types.Identifier, []}
 
   embedded_schema do
     field(:type, :string)
-    field(:id, StixEx.Types.Identifier)
     field(:created_by_ref, StixEx.Types.Identifier)
     field(:created, :utc_datetime_usec)
     field(:object_marking_refs, {:array, StixEx.Types.Identifier})

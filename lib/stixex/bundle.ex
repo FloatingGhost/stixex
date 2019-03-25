@@ -12,6 +12,7 @@ defmodule StixEx.Bundle do
     Utils
   }
 
+  @derive Jason.Encoder
   @type_name "bundle"
   @spec_version "2.0"
   @primary_key false

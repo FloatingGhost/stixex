@@ -12,6 +12,7 @@ defmodule StixEx.Types.ExternalReference do
   import Ecto.Changeset
   import StixEx.Validation
 
+  @derive Jason.Encoder
   @required_fields [:source_name]
   @required_one_of [:description, :url, :external_id]
 

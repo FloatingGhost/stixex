@@ -3,6 +3,8 @@ defmodule StixEx.Types.MimePart do
   import Ecto.Changeset
   import StixEx.Validation
 
+  @derive Jason.Encoder
+
   embedded_schema do
     field(:body, :string)
     field(:body_raw_ref, StixEx.Types.ObjectRef)

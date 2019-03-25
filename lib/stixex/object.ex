@@ -29,6 +29,7 @@ defmodule StixEx.Object do
       @behaviour StixEx.Object
       @primary_key {:id, StixEx.Types.Identifier, []}
       @type_name unquote(opts[:type_name])
+      @derive Jason.Encoder
     end
   end
 

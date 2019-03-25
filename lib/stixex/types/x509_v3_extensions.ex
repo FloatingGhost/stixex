@@ -2,6 +2,8 @@ defmodule StixEx.Types.X509V3Extensions do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive Jason.Encoder
+
   embedded_schema do
     field(:basic_constraints, :string)
     field(:name_constraints, :string)

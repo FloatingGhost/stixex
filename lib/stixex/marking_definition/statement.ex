@@ -1,7 +1,8 @@
-defmodule StixEx.Object.MarkingDefinition.Statement do
+defmodule StixEx.MarkingDefinition.Statement do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive Jason.Encoder
   @required_fields [:statement]
 
   embedded_schema do
