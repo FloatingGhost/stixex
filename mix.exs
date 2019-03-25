@@ -5,7 +5,7 @@ defmodule StixEx.MixProject do
     [
       app: :stixex,
       description: "Implementation of CTI's STIX format",
-      version: "0.1.1",
+      version: "0.1.2",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
