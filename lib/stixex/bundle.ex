@@ -90,4 +90,78 @@ defmodule StixEx.Bundle do
     |> add_objects(rest)
   end
 
+  @doc """
+  Load a stix bundle from string
+
+      iex> StixEx.from_string("{...}")
+      {:ok, %StixEx.Bundle{}}
+
+      iex> StixEx.from_string("{...}", format: :json)
+      {:ok, %StixEx.Bundle{}}
+
+  current supported formats: `:json`
+  """
+  def from_string(data, opts \\ [format: :json]) do
+    {:ok, parsed} = parse_file_data(data, opts[:format])
+    new(parsed)
+  end
+
+  @doc """
+  Load a stix bundle from file
+
+      iex> StixEx.from_file("my_bundle.json")
+      {:ok, %StixEx.Bundle{
+        # stuff here
+      }}
+
+  current supported formats: 
+    - `:json`
+    - `:autodetect`
+  """
+  def from_file(filename, opts \\ [format: :autodetect]) when is_binary(filename) do
+    filetype =
+      if opts[:format] == :autodetect do
+        {:ok, format} = infer_filetype(filename)
+        format
+      else
+        opts[:format]
+      end
+
+    if File.exists?(filename) do
+      {:ok, data} = File.read(filename)
+      {:ok, parsed} = parse_file_data(data, filetype)
+      StixEx.Bundle.new(parsed)
+    else
+      {:error, {:file_does_not_exist, filename}}
+    end
+  end
+
+  defp infer_filetype(filename) do
+    filename
+    |> String.split(".")
+    |> List.last()
+    |> case do
+      "json" -> {:ok, :json}
+      "xml" -> {:ok, :xml}
+      _other -> :error
+    end
+  end
+
+  defp parse_file_data(data, :json) do
+    Jason.decode(data)
+  end
+
+  @doc """
+  Dump a STIX bundle to a specified format
+
+      iex> StixEx.Bundle.to_string(%StixEx.Bundle{})
+      {:ok, "{\"id\":\"bundle...\"}}
+
+  Opts:
+    - `:serialiser` Any module implemeting StixEx.Serialiser behaviour. Defaults to
+      StixEx.Serialiser.JSON.
+  """
+  def to_string(bundle, opts \\ [serialiser: StixEx.Serialiser.JSON]) do
+    StixEx.Serialiser.dump(opts[:serialiser], bundle)
+  end
 end

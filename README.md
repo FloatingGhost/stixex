@@ -34,3 +34,25 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/stixex](https://hexdocs.pm/stixex).
 
+## Example Usage
+
+```elixir
+iex> {:ok, threat_actor} = StixEx.Object.ThreatActor.new(%{
+    name: "OASIS",
+    primary_motivation: "dominance"
+})
+
+iex> {:ok, campaign} = StixEx.Object.Campaign.new(%{
+    name: "STIX"
+})
+
+iex> {:ok, relationship} = StixEx.Object.Relationship.new(%{
+    source_ref: campaign.id,
+    relationship_type: "attributed-to",
+    target_ref: threat_actor.id
+})
+
+iex> {:ok, my_bundle} = StixEx.Bundle.new(%{objects: [threat_actor, campaign, relationship]})
+iex> StixEx.Bundle.to_string(my_bundle, )
+{:ok, "{\"id\":\"bundle--...\"}"}
+```

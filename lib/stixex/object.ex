@@ -38,8 +38,8 @@ defmodule StixEx.Object do
       field(:type, :string, default: @type_name)
       field(:created_by_ref, StixEx.Types.Identifier)
       field(:revoked, :boolean, default: false)
-      field(:labels, {:array, :string})
-      field(:object_marking_refs, {:array, StixEx.Types.Identifier})
+      field(:labels, {:array, :string}, default: [])
+      field(:object_marking_refs, {:array, StixEx.Types.Identifier}, default: [])
       field(:created, :utc_datetime)
       field(:modified, :utc_datetime)
 
@@ -54,6 +54,8 @@ defmodule StixEx.Object do
         new_changeset =
           changeset(%__MODULE__{}, params)
           |> StixEx.Utils.put_if_not_set(:id, StixEx.Types.Identifier.generate(@type_name))
+          |> StixEx.Utils.put_if_not_set(:created, DateTime.utc_now())
+          |> StixEx.Utils.put_if_not_set(:modified, DateTime.utc_now())
 
         if new_changeset.valid? do
           Ecto.Changeset.apply_action(new_changeset, :insert)

@@ -7,6 +7,9 @@ defmodule StixEx.Types.Object do
 
   def type, do: :map
 
+  # In case we're already loaded
+  def cast(%_type{} = struct), do: {:ok, struct}
+
   def cast(%{type: type} = struct) do
     {:ok, type} = StixEx.TypeRegistry.get(type)
     type.new(struct)
