@@ -162,4 +162,15 @@ defmodule StixEx.Bundle do
   def to_string(bundle, opts \\ [serialiser: StixEx.Serialiser.JSON]) do
     StixEx.Serialiser.dump(opts[:serialiser], bundle)
   end
+
+  @doc """
+  Dump a STIX bundle to disk
+
+      iex> StixEx.Bundle.to_file(%StixEx.Bundle{}, "my_bundle.json")
+      :ok
+  """
+  def to_file(bundle, filename, opts \\ [serialiser: StixEx.Serialiser.JSON]) do
+    {:ok, string} = to_string(bundle, opts)
+    File.write(filename, string)
+  end
 end
