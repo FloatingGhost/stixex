@@ -98,7 +98,7 @@ defmodule StixEx.Bundle do
       iex> StixEx.from_string("{...}", format: :json)
       {:ok, %StixEx.Bundle{}}
 
-  current supported formats: `:json`
+  currently supported formats: `:json`
   """
   def from_string(data, opts \\ [format: :json]) do
     {:ok, parsed} = parse_file_data(data, opts[:format])
@@ -113,9 +113,8 @@ defmodule StixEx.Bundle do
         # stuff here
       }}
 
-  current supported formats: 
-    - `:json`
-    - `:autodetect`
+  options:
+    - `:format` - currently supported `:json`, `:autodetect` 
   """
   def from_file(filename, opts \\ [format: :autodetect]) when is_binary(filename) do
     filetype =
@@ -154,7 +153,7 @@ defmodule StixEx.Bundle do
   Dump a STIX bundle to a specified format
 
       iex> StixEx.Bundle.to_string(%StixEx.Bundle{})
-      {:ok, "{\"id\":\"bundle...\"}}
+      {:ok, "{some_json}"}
 
   Opts:
     - `:serialiser` Any module implemeting StixEx.Serialiser behaviour. Defaults to
