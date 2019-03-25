@@ -5,7 +5,8 @@ defmodule StixEx.Object.ThreatActor do
 
   embedded_schema do
     common_fields()
-    name_and_description()
+    field(:name, :string)
+    field(:description, :string)
     field(:aliases, {:array, :string})
     field(:roles, {:array, :string})
     field(:goals, {:array, :string})

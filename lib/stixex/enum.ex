@@ -1,7 +1,7 @@
 defmodule StixEx.Enum do
   @moduledoc """
-  It's basically a vocabulary, but different. Apparently. Ask the STIX
-  people I don't hecking know.
+  Like a vocabulary but it FORCES values to be part of it, instead of sending them a strongly worded letter
+  if they don't.
   """
 
   @callback values :: [String.t()]

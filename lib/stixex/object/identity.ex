@@ -5,7 +5,8 @@ defmodule StixEx.Object.Identity do
 
   embedded_schema do
     common_fields()
-    name_and_description()
+    field(:name, :string)
+    field(:description, :string)
     field(:identity_class, :string)
     field(:sectors, {:array, :string})
     field(:contact_information, :string)

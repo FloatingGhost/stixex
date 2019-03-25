@@ -5,8 +5,9 @@ defmodule StixEx.Object.AttackPattern do
 
   embedded_schema do
     common_fields()
-    name_and_description()
-    kill_chain_phases()
+    field(:name, :string)
+    field(:description, :string)
+    embeds_many(:kill_chain_phases, StixEx.Types.KillChainPhase)
   end
 
   common_functions()

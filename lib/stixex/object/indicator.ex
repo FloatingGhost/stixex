@@ -5,10 +5,12 @@ defmodule StixEx.Object.Indicator do
 
   embedded_schema do
     common_fields()
-    name_and_description()
-    first_and_last_seen(first_seen: :valid_from, last_seen: :valid_until)
-    kill_chain_phases()
+    field(:name, :string)
+    field(:description, :string)
+    field(:valid_from, :utc_datetime)
+    field(:valid_until, :utc_datetime)
     field(:pattern, :string)
+    embeds_many(:kill_chain_phases, StixEx.Types.KillChainPhase)
   end
 
   common_functions()

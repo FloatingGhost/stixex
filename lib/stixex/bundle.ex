@@ -1,4 +1,9 @@
 defmodule StixEx.Bundle do
+  @moduledoc """
+  A Bundle is a collection of arbitrary STIX Objects and Marking Definitions grouped together in a single container.
+  A Bundle does not have any semantic meaning and Objects are not considered related by virtue of being in the same Bundle.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

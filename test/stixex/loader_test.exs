@@ -5,7 +5,7 @@ defmodule StixExTest.Loader do
     {:ok, files} = File.ls("test/data/")
 
     for file <- files do
-      StixEx.load("test/data/" <> file)
+      StixEx.from_file("test/data/" <> file)
       |> case do
         {:ok, _bundle} ->
           :ok

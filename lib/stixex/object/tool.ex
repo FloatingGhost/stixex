@@ -5,9 +5,10 @@ defmodule StixEx.Object.Tool do
 
   embedded_schema do
     common_fields()
-    name_and_description()
-    kill_chain_phases()
+    field(:name, :string)
+    field(:description, :string)
     field(:tool_version, :string)
+    embeds_many(:kill_chain_phases, StixEx.Types.KillChainPhase)
   end
 
   common_functions()

@@ -5,7 +5,8 @@ defmodule StixEx.Object.ObservedData do
 
   embedded_schema do
     common_fields()
-    first_and_last_seen(first_seen: :first_observed, last_seen: :last_observed)
+    field(:first_observed, :utc_datetime)
+    field(:last_observed, :utc_datetime)
     field(:number_observed, :integer)
     field(:objects, :map)
   end

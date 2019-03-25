@@ -47,26 +47,6 @@ defmodule StixEx.Object do
     end
   end
 
-  defmacro first_and_last_seen(opts \\ [first_seen: :first_seen, last_seen: :last_seen]) do
-    quote do
-      field(unquote(opts[:first_seen]), :utc_datetime)
-      field(unquote(opts[:last_seen]), :utc_datetime)
-    end
-  end
-
-  defmacro name_and_description do
-    quote do
-      field(:name, :string)
-      field(:description, :string)
-    end
-  end
-
-  defmacro kill_chain_phases do
-    quote do
-      embeds_many(:kill_chain_phases, StixEx.Types.KillChainPhase)
-    end
-  end
-
   defmacro common_functions do
     quote do
       def new(params) do

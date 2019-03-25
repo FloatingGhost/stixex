@@ -5,8 +5,10 @@ defmodule StixEx.Object.Campaign do
 
   embedded_schema do
     common_fields()
-    name_and_description()
-    first_and_last_seen()
+    field(:name, :string)
+    field(:description, :string)
+    field(:first_seen, :utc_datetime)
+    field(:last_seen, :utc_datetime)
     field(:objective, :string)
     field(:aliases, {:array, :string})
   end

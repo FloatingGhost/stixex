@@ -5,7 +5,8 @@ defmodule StixEx.Object.CourseOfAction do
 
   embedded_schema do
     common_fields()
-    name_and_description()
+    field(:name, :string)
+    field(:description, :string)
   end
 
   common_functions()
