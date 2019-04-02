@@ -1,4 +1,4 @@
-defmodule StixEx.Vocabulary.ThretActorRole do
+defmodule StixEx.Vocabulary.ThreatActorRole do
   @behaviour StixEx.Vocabulary
 
   @impl StixEx.Vocabulary
