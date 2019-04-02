@@ -27,7 +27,7 @@ The package can be installed by adding `stixex` to your list of dependencies in 
 ```elixir
 def deps do
   [
-    {:stixex, "~> 0.1.2"}
+    {:stixex, "~> 0.1.3"}
   ]
 end
 ```
